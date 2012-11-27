@@ -15,6 +15,8 @@
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
 		037534531662D6C1006BAACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037534511662D6C1006BAACF /* InfoPlist.strings */; };
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
+		03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AAE16650FED007809D3 /* DALABHelpers.m */; };
+		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
 		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
 		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
@@ -46,6 +48,10 @@
 		037534521662D6C1006BAACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		037534541662D6C1006BAACF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		037534561662D6C1006BAACF /* Dial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dial-Prefix.pch"; sourceTree = "<group>"; };
+		03942AAD16650FED007809D3 /* DALABHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABHelpers.h; path = Classes/DALABHelpers.h; sourceTree = "<group>"; };
+		03942AAE16650FED007809D3 /* DALABHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABHelpers.m; path = Classes/DALABHelpers.m; sourceTree = "<group>"; };
+		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
+		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
 		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
 		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
@@ -89,6 +95,10 @@
 				03084F3816647C8C00227BC0 /* DALABAddressBook.m */,
 				03084F3A166488D200227BC0 /* DALABPerson.h */,
 				03084F3B166488D200227BC0 /* DALABPerson.m */,
+				03942AAD16650FED007809D3 /* DALABHelpers.h */,
+				03942AAE16650FED007809D3 /* DALABHelpers.m */,
+				03942AB0166511B1007809D3 /* DALABMultiValueObject.h */,
+				03942AB1166511B1007809D3 /* DALABMultiValueObject.m */,
 			);
 			name = "Address Book";
 			sourceTree = "<group>";
@@ -265,6 +275,8 @@
 				03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */,
 				03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */,
 				03084F3C166488D200227BC0 /* DALABPerson.m in Sources */,
+				03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */,
+				03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

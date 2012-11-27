@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) ABRecordRef record;
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
-@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSArray *emails;
+@property (nonatomic, copy) NSArray *phoneNumbers;
 @property (nonatomic, copy) NSData *imageData;
 @end

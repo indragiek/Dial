@@ -8,6 +8,7 @@
 
 #import "DALABPerson.h"
 #import "DALABAddressBook.h"
+#import "DALABHelpers.h"
 
 @implementation DALABPerson
 @synthesize imageData = _imageData;
@@ -18,10 +19,12 @@
         _record = record;
         _firstName = (__bridge_transfer NSString*)ABRecordCopyValue(_record, kABPersonFirstNameProperty);
         _lastName = (__bridge_transfer NSString*)ABRecordCopyValue(_record, kABPersonLastNameProperty);
-        _email = (__bridge_transfer NSString*)ABRecordCopyValue(_record, kABPersonEmailProperty);
-        if (ABPersonHasImageData(_record)) {
-            
-        }
+        ABMultiValueRef emails = ABRecordCopyValue(_record, kABPersonEmailProperty);
+        _emails = DALABMultiValueObjectArrayWithMultiValue(emails);
+        ABMultiValueRef phones = ABRecordCopyValue(_record, kABPersonPhoneProperty);
+        _phoneNumbers = DALABMultiValueObjectArrayWithMultiValue(phones);
+        CFRelease(emails);
+        CFRelease(phones);
     }
     return self;
 }
@@ -47,5 +50,29 @@
 - (void)setEmail:(NSString *)email
 {
     ABRecordSetValue(_record, kABPersonEmailProperty, (__bridge CFStringRef)email, NULL);
+}
+
+- (void)setPhoneNumbers:(NSArray *)phoneNumbers
+{
+    ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, phoneNumbers);
+    ABRecordSetValue(_record, kABPersonPhoneProperty, multiValue, NULL);
+}
+
+- (void)setEmails:(NSArray *)emails
+{
+    ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, emails);
+    ABRecordSetValue(_record, kABPersonEmailProperty, multiValue, NULL);
+}
+
+- (NSData *)imageData
+{
+    if (!_imageData && ABPersonHasImageData(_record))
+        _imageData = (__bridge_transfer NSData*)ABPersonCopyImageData(_record);
+    return _imageData;
+}
+
+- (void)setImageData:(NSData *)imageData
+{
+    ABPersonSetImageData(_record, (__bridge CFDataRef)imageData, NULL);
 }
 @end
