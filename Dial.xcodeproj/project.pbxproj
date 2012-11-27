@@ -18,6 +18,7 @@
 		03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AAE16650FED007809D3 /* DALABHelpers.m */; };
 		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
+		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
 		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
 		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
 		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
@@ -55,6 +56,8 @@
 		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
 		03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+DALAdditions.m"; path = "Categories/NSMutableArray+DALAdditions.m"; sourceTree = "<group>"; };
+		03942AB8166521AE007809D3 /* DALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALImageCache.h; path = Classes/DALImageCache.h; sourceTree = "<group>"; };
+		03942AB9166521AE007809D3 /* DALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALImageCache.m; path = Classes/DALImageCache.m; sourceTree = "<group>"; };
 		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
 		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
 		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 			children = (
 				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
+				03942AB716652145007809D3 /* Utilities */,
 				03084F3516647C6700227BC0 /* Address Book */,
 				03B94F5216644DF1007EDF4F /* View Controllers */,
 				03B94F7116645111007EDF4F /* Views */,
@@ -167,6 +171,15 @@
 				03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		03942AB716652145007809D3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				03942AB8166521AE007809D3 /* DALImageCache.h */,
+				03942AB9166521AE007809D3 /* DALImageCache.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		03B94F5216644DF1007EDF4F /* View Controllers */ = {
@@ -291,6 +304,7 @@
 				03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */,
 				03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */,
 				03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */,
+				03942ABA166521AE007809D3 /* DALImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
