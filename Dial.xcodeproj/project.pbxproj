@@ -12,12 +12,20 @@
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
 		037534531662D6C1006BAACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037534511662D6C1006BAACF /* InfoPlist.strings */; };
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
-		037534591662D6C1006BAACF /* DALAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534581662D6C1006BAACF /* DALAppDelegate.m */; };
-		0375345B1662D6C1006BAACF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0375345A1662D6C1006BAACF /* Default.png */; };
-		0375345D1662D6C1006BAACF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0375345C1662D6C1006BAACF /* Default@2x.png */; };
-		0375345F1662D6C1006BAACF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0375345E1662D6C1006BAACF /* Default-568h@2x.png */; };
-		037534621662D6C1006BAACF /* DALViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534611662D6C1006BAACF /* DALViewController.m */; };
-		037534651662D6C1006BAACF /* DALViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037534631662D6C1006BAACF /* DALViewController.xib */; };
+		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
+		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
+		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
+		03B94F5D16644E4E007EDF4F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5A16644E4E007EDF4F /* Default.png */; };
+		03B94F5E16644E4E007EDF4F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5B16644E4E007EDF4F /* Default@2x.png */; };
+		03B94F6116644E62007EDF4F /* DALAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F6016644E62007EDF4F /* DALAppDelegate.m */; };
+		03B94F6416644EA8007EDF4F /* DALViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F6316644EA8007EDF4F /* DALViewController.m */; };
+		03B94F6B1664503F007EDF4F /* porthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F651664503F007EDF4F /* porthole.png */; };
+		03B94F6C1664503F007EDF4F /* porthole@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F661664503F007EDF4F /* porthole@2x.png */; };
+		03B94F6D1664503F007EDF4F /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F671664503F007EDF4F /* bg.png */; };
+		03B94F6E1664503F007EDF4F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F681664503F007EDF4F /* star.png */; };
+		03B94F6F1664503F007EDF4F /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F691664503F007EDF4F /* star@2x.png */; };
+		03B94F701664503F007EDF4F /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F6A1664503F007EDF4F /* bg@2x.png */; };
+		03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,14 +37,24 @@
 		037534521662D6C1006BAACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		037534541662D6C1006BAACF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		037534561662D6C1006BAACF /* Dial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dial-Prefix.pch"; sourceTree = "<group>"; };
-		037534571662D6C1006BAACF /* DALAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DALAppDelegate.h; sourceTree = "<group>"; };
-		037534581662D6C1006BAACF /* DALAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DALAppDelegate.m; sourceTree = "<group>"; };
-		0375345A1662D6C1006BAACF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		0375345C1662D6C1006BAACF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0375345E1662D6C1006BAACF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		037534601662D6C1006BAACF /* DALViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DALViewController.h; sourceTree = "<group>"; };
-		037534611662D6C1006BAACF /* DALViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DALViewController.m; sourceTree = "<group>"; };
-		037534641662D6C1006BAACF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DALViewController.xib; sourceTree = "<group>"; };
+		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
+		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
+		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
+		03B94F5916644E4E007EDF4F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		03B94F5A16644E4E007EDF4F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = SOURCE_ROOT; };
+		03B94F5B16644E4E007EDF4F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		03B94F5F16644E62007EDF4F /* DALAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALAppDelegate.h; path = Classes/DALAppDelegate.h; sourceTree = "<group>"; };
+		03B94F6016644E62007EDF4F /* DALAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALAppDelegate.m; path = Classes/DALAppDelegate.m; sourceTree = "<group>"; };
+		03B94F6216644EA8007EDF4F /* DALViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALViewController.h; path = Classes/DALViewController.h; sourceTree = "<group>"; };
+		03B94F6316644EA8007EDF4F /* DALViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALViewController.m; path = Classes/DALViewController.m; sourceTree = "<group>"; };
+		03B94F651664503F007EDF4F /* porthole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = porthole.png; path = Resources/porthole.png; sourceTree = SOURCE_ROOT; };
+		03B94F661664503F007EDF4F /* porthole@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "porthole@2x.png"; path = "Resources/porthole@2x.png"; sourceTree = SOURCE_ROOT; };
+		03B94F671664503F007EDF4F /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = Resources/bg.png; sourceTree = SOURCE_ROOT; };
+		03B94F681664503F007EDF4F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Resources/star.png; sourceTree = SOURCE_ROOT; };
+		03B94F691664503F007EDF4F /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "Resources/star@2x.png"; sourceTree = SOURCE_ROOT; };
+		03B94F6A1664503F007EDF4F /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg@2x.png"; path = "Resources/bg@2x.png"; sourceTree = SOURCE_ROOT; };
+		03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactCollectionViewCell.h; path = Classes/DALContactCollectionViewCell.h; sourceTree = "<group>"; };
+		03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactCollectionViewCell.m; path = Classes/DALContactCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +101,11 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
-				037534571662D6C1006BAACF /* DALAppDelegate.h */,
-				037534581662D6C1006BAACF /* DALAppDelegate.m */,
-				037534601662D6C1006BAACF /* DALViewController.h */,
-				037534611662D6C1006BAACF /* DALViewController.m */,
-				037534631662D6C1006BAACF /* DALViewController.xib */,
+				03B94F5816644E47007EDF4F /* Resources */,
+				03B94F5216644DF1007EDF4F /* View Controllers */,
+				03B94F7116645111007EDF4F /* Views */,
+				03B94F5F16644E62007EDF4F /* DALAppDelegate.h */,
+				03B94F6016644E62007EDF4F /* DALAppDelegate.m */,
 				0375344F1662D6C1006BAACF /* Supporting Files */,
 			);
 			path = Dial;
@@ -100,11 +118,45 @@
 				037534511662D6C1006BAACF /* InfoPlist.strings */,
 				037534541662D6C1006BAACF /* main.m */,
 				037534561662D6C1006BAACF /* Dial-Prefix.pch */,
-				0375345A1662D6C1006BAACF /* Default.png */,
-				0375345C1662D6C1006BAACF /* Default@2x.png */,
-				0375345E1662D6C1006BAACF /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03B94F5216644DF1007EDF4F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03B94F6216644EA8007EDF4F /* DALViewController.h */,
+				03B94F6316644EA8007EDF4F /* DALViewController.m */,
+				03B94F5316644E12007EDF4F /* DALContactsViewController.h */,
+				03B94F5416644E12007EDF4F /* DALContactsViewController.m */,
+				03B94F5516644E12007EDF4F /* DALContactsViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		03B94F5816644E47007EDF4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03B94F651664503F007EDF4F /* porthole.png */,
+				03B94F661664503F007EDF4F /* porthole@2x.png */,
+				03B94F671664503F007EDF4F /* bg.png */,
+				03B94F681664503F007EDF4F /* star.png */,
+				03B94F691664503F007EDF4F /* star@2x.png */,
+				03B94F6A1664503F007EDF4F /* bg@2x.png */,
+				03B94F5916644E4E007EDF4F /* Default-568h@2x.png */,
+				03B94F5A16644E4E007EDF4F /* Default.png */,
+				03B94F5B16644E4E007EDF4F /* Default@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		03B94F7116645111007EDF4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */,
+				03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +187,7 @@
 			attributes = {
 				CLASSPREFIX = DAL;
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "Indragie Karunaratne";
+				ORGANIZATIONNAME = "Reactive Development";
 			};
 			buildConfigurationList = 0375343E1662D6C0006BAACF /* Build configuration list for PBXProject "Dial" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -160,10 +212,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				037534531662D6C1006BAACF /* InfoPlist.strings in Resources */,
-				0375345B1662D6C1006BAACF /* Default.png in Resources */,
-				0375345D1662D6C1006BAACF /* Default@2x.png in Resources */,
-				0375345F1662D6C1006BAACF /* Default-568h@2x.png in Resources */,
-				037534651662D6C1006BAACF /* DALViewController.xib in Resources */,
+				03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */,
+				03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */,
+				03B94F5D16644E4E007EDF4F /* Default.png in Resources */,
+				03B94F5E16644E4E007EDF4F /* Default@2x.png in Resources */,
+				03B94F6B1664503F007EDF4F /* porthole.png in Resources */,
+				03B94F6C1664503F007EDF4F /* porthole@2x.png in Resources */,
+				03B94F6D1664503F007EDF4F /* bg.png in Resources */,
+				03B94F6E1664503F007EDF4F /* star.png in Resources */,
+				03B94F6F1664503F007EDF4F /* star@2x.png in Resources */,
+				03B94F701664503F007EDF4F /* bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				037534551662D6C1006BAACF /* main.m in Sources */,
-				037534591662D6C1006BAACF /* DALAppDelegate.m in Sources */,
-				037534621662D6C1006BAACF /* DALViewController.m in Sources */,
+				03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */,
+				03B94F6116644E62007EDF4F /* DALAppDelegate.m in Sources */,
+				03B94F6416644EA8007EDF4F /* DALViewController.m in Sources */,
+				03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +249,6 @@
 				037534521662D6C1006BAACF /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		037534631662D6C1006BAACF /* DALViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				037534641662D6C1006BAACF /* en */,
-			);
-			name = DALViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -292,6 +344,7 @@
 				0375346A1662D6C1006BAACF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
