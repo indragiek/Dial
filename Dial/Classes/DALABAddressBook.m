@@ -84,14 +84,31 @@ void DALExternalChangeCallback(ABAddressBookRef addressBook, CFDictionaryRef inf
 
 #pragma mark - People
 
+// <http://stackoverflow.com/questions/4067542/getting-merged-unified-entries-from-abaddressbook>
+
 - (NSArray *)allPeople
 {
-    NSArray *records = (__bridge_transfer NSArray*)ABAddressBookCopyArrayOfAllPeople(_addressBook);
-    NSMutableArray *people = [NSMutableArray arrayWithCapacity:[records count]];
-    for (id record in records) {
-        DALABPerson *person = [DALABPerson personWithRecord:(__bridge ABRecordRef)record];
-        [people addObject:person];
-    }
+    CFArrayRef records = ABAddressBookCopyArrayOfAllPeople(_addressBook);
+    CFMutableArrayRef recordsMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(records), records);
+    CFArraySortValues(recordsMutable, CFRangeMake(0, CFArrayGetCount(recordsMutable)), (CFComparatorFunction)ABPersonComparePeopleByName, (void *)ABPersonGetSortOrdering());
+    CFRelease(records);
+    NSArray *bridgedRecords = (__bridge_transfer NSArray*)recordsMutable;
+    NSMutableArray *people = [NSMutableArray arrayWithCapacity:[bridgedRecords count]];
+    NSMutableSet *skip = [NSMutableSet set];
+    [bridgedRecords enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (![skip member:obj]) {
+            DALABPerson *person = [DALABPerson personWithRecord:(__bridge ABRecordRef)obj];
+            NSArray *linked = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople((__bridge ABRecordRef)obj);
+            if ([linked count] > 1) {
+                [skip addObjectsFromArray:linked];
+                [linked enumerateObjectsUsingBlock:^(id obj1, NSUInteger idx1, BOOL *stop1) {
+                    DALABPerson *linkedPerson = [DALABPerson personWithRecord:(__bridge ABRecordRef)obj];
+                    [person mergePerson:linkedPerson];
+                }];
+            }
+            [people addObject:person];
+        }
+    }];
     return people;
 }
 @end

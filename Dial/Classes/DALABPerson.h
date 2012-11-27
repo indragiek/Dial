@@ -11,6 +11,7 @@
 
 @interface DALABPerson : NSObject
 + (instancetype)personWithRecord:(ABRecordRef)record;
+- (void)mergePerson:(DALABPerson *)person;
 
 @property (nonatomic, readonly) ABRecordRef record;
 @property (nonatomic, copy) NSString *firstName;

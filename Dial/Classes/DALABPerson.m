@@ -10,6 +10,8 @@
 #import "DALABAddressBook.h"
 #import "DALABHelpers.h"
 
+#import "NSMutableArray+DALAdditions.h"
+
 @implementation DALABPerson
 @synthesize imageData = _imageData;
 
@@ -74,5 +76,17 @@
 - (void)setImageData:(NSData *)imageData
 {
     ABPersonSetImageData(_record, (__bridge CFDataRef)imageData, NULL);
+}
+
+- (void)mergePerson:(DALABPerson *)person
+{
+    NSMutableArray *emails = [NSMutableArray arrayWithArray:self.emails];
+    NSMutableArray *phones = [NSMutableArray arrayWithArray:self.phoneNumbers];
+    [emails addObjectsFromArray:person.emails];
+    [phones addObjectsFromArray:person.phoneNumbers];
+    [emails removeDuplicates];
+    [phones removeDuplicates];
+    _emails = emails;
+    _phoneNumbers = phones;
 }
 @end

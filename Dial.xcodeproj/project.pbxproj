@@ -17,6 +17,7 @@
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
 		03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AAE16650FED007809D3 /* DALABHelpers.m */; };
 		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
+		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
 		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
 		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
 		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
@@ -52,6 +53,8 @@
 		03942AAE16650FED007809D3 /* DALABHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABHelpers.m; path = Classes/DALABHelpers.m; sourceTree = "<group>"; };
 		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
 		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
+		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
+		03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+DALAdditions.m"; path = "Categories/NSMutableArray+DALAdditions.m"; sourceTree = "<group>"; };
 		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
 		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
 		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
+				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
 				03084F3516647C6700227BC0 /* Address Book */,
 				03B94F5216644DF1007EDF4F /* View Controllers */,
@@ -154,6 +158,15 @@
 				037534561662D6C1006BAACF /* Dial-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03942AB316651CEA007809D3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */,
+				03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		03B94F5216644DF1007EDF4F /* View Controllers */ = {
@@ -277,6 +290,7 @@
 				03084F3C166488D200227BC0 /* DALABPerson.m in Sources */,
 				03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */,
 				03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */,
+				03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

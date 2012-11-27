@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DALContactCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, weak) IBOutlet UILabel *firstNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *lastNameLabel;
 @end
