@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3816647C8C00227BC0 /* DALABAddressBook.m */; };
+		03084F3C166488D200227BC0 /* DALABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3B166488D200227BC0 /* DALABPerson.m */; };
+		03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03084F3D1664947F00227BC0 /* AddressBook.framework */; };
 		037534491662D6C1006BAACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037534481662D6C1006BAACF /* UIKit.framework */; };
 		0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344A1662D6C1006BAACF /* Foundation.framework */; };
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
@@ -26,9 +29,15 @@
 		03B94F6F1664503F007EDF4F /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F691664503F007EDF4F /* star@2x.png */; };
 		03B94F701664503F007EDF4F /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F6A1664503F007EDF4F /* bg@2x.png */; };
 		03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */; };
+		03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03084F3716647C8C00227BC0 /* DALABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABAddressBook.h; path = Classes/DALABAddressBook.h; sourceTree = "<group>"; };
+		03084F3816647C8C00227BC0 /* DALABAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABAddressBook.m; path = Classes/DALABAddressBook.m; sourceTree = "<group>"; };
+		03084F3A166488D200227BC0 /* DALABPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABPerson.h; path = Classes/DALABPerson.h; sourceTree = "<group>"; };
+		03084F3B166488D200227BC0 /* DALABPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABPerson.m; path = Classes/DALABPerson.m; sourceTree = "<group>"; };
+		03084F3D1664947F00227BC0 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		037534441662D6C1006BAACF /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		037534481662D6C1006BAACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0375344A1662D6C1006BAACF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,6 +64,7 @@
 		03B94F6A1664503F007EDF4F /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg@2x.png"; path = "Resources/bg@2x.png"; sourceTree = SOURCE_ROOT; };
 		03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactCollectionViewCell.h; path = Classes/DALContactCollectionViewCell.h; sourceTree = "<group>"; };
 		03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactCollectionViewCell.m; path = Classes/DALContactCollectionViewCell.m; sourceTree = "<group>"; };
+		03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactCollectionViewCell.xib; path = Classes/DALContactCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */,
 				037534491662D6C1006BAACF /* UIKit.framework in Frameworks */,
 				0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */,
 				0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */,
@@ -71,6 +82,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03084F3516647C6700227BC0 /* Address Book */ = {
+			isa = PBXGroup;
+			children = (
+				03084F3716647C8C00227BC0 /* DALABAddressBook.h */,
+				03084F3816647C8C00227BC0 /* DALABAddressBook.m */,
+				03084F3A166488D200227BC0 /* DALABPerson.h */,
+				03084F3B166488D200227BC0 /* DALABPerson.m */,
+			);
+			name = "Address Book";
+			sourceTree = "<group>";
+		};
 		037534391662D6C0006BAACF = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +113,7 @@
 		037534471662D6C1006BAACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03084F3D1664947F00227BC0 /* AddressBook.framework */,
 				037534481662D6C1006BAACF /* UIKit.framework */,
 				0375344A1662D6C1006BAACF /* Foundation.framework */,
 				0375344C1662D6C1006BAACF /* CoreGraphics.framework */,
@@ -102,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				03B94F5816644E47007EDF4F /* Resources */,
+				03084F3516647C6700227BC0 /* Address Book */,
 				03B94F5216644DF1007EDF4F /* View Controllers */,
 				03B94F7116645111007EDF4F /* Views */,
 				03B94F5F16644E62007EDF4F /* DALAppDelegate.h */,
@@ -155,6 +179,7 @@
 			children = (
 				03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */,
 				03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */,
+				03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -222,6 +247,7 @@
 				03B94F6E1664503F007EDF4F /* star.png in Resources */,
 				03B94F6F1664503F007EDF4F /* star@2x.png in Resources */,
 				03B94F701664503F007EDF4F /* bg@2x.png in Resources */,
+				03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +263,8 @@
 				03B94F6116644E62007EDF4F /* DALAppDelegate.m in Sources */,
 				03B94F6416644EA8007EDF4F /* DALViewController.m in Sources */,
 				03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */,
+				03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */,
+				03084F3C166488D200227BC0 /* DALABPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
