@@ -46,12 +46,6 @@ static NSString *_imageCacheDirectory;
     return self;
 }
 
-- (void)dealloc
-{
-    dispatch_release(_outputQueue);
-    dispatch_release(_inputQueue);
-}
-
 #pragma mark - Public API
 
 - (void)fetchImageForKey:(NSString *)key completionHandler:(void (^)(UIImage *image))handler
