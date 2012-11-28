@@ -9,8 +9,8 @@
 #import "DALContactsViewController.h"
 #import "DALContactCollectionViewCell.h"
 
-#import "DALABAddressBook.h"
-#import "DALABPerson.h"
+#import "TTUnifiedAddressBook.h"
+#import "TTUnifiedCard.h"
 
 static NSString* const DALContactsBackgroundPatternImageName = @"bg";
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
@@ -20,10 +20,12 @@ static CGFloat const DALContactsLayoutItemWidth = 81.f;
 static CGFloat const DALContactsLayoutItemHeight = 121.f;
 
 @interface DALContactsViewController ()
-@property (nonatomic, strong) NSArray *people;
+@property (nonatomic, strong) NSArray *cards;
 @end
 
-@implementation DALContactsViewController
+@implementation DALContactsViewController {
+    TTUnifiedAddressBook *_addressBook;
+}
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
@@ -38,34 +40,29 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
     layout.itemSize = CGSizeMake(DALContactsLayoutItemWidth, DALContactsLayoutItemHeight);
     layout.sectionInset = UIEdgeInsetsMake(DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing, DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing);
     
-    DALABAddressBook *addressBook = [DALABAddressBook addressBook];
-    void (^getPeople)() = ^(){
-        self.people = [addressBook allPeople];
-        [self.collectionView reloadData];
-    };
-    if (addressBook.authorizationStatus != kABAuthorizationStatusAuthorized) {
-        [addressBook requestAuthorizationWithCompletionHandler:^(DALABAddressBook *addressBook, BOOL granted, NSError *error) {
-            if (granted)
-                getPeople();
+    [TTUnifiedAddressBook accessAddressBookWithGranted:^(ABAddressBookRef book) {
+        _addressBook = [[TTUnifiedAddressBook alloc] initWithAddressBook:book];
+        [_addressBook updateAddressBookWithCompletion:^{
+            self.cards = [_addressBook allCards];
+            [self.collectionView reloadData];
         }];
-    } else {
-        getPeople();
-    }
+    } denied:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.people count];
+    return [self.cards count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DALContactCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DALContactsCellIdentifier forIndexPath:indexPath];
-    DALABPerson *person = [self.people objectAtIndex:indexPath.row];
-    cell.firstNameLabel.text = person.firstName;
-    cell.lastNameLabel.text = person.lastName;
+    TTUnifiedCard *card = [self.cards objectAtIndex:indexPath.row];
+    [card setAddressBook:_addressBook.addressBook];
+    cell.firstNameLabel.text = [card stringForProperty:kABPersonFirstNameProperty];
+    cell.lastNameLabel.text = [card stringForProperty:kABPersonLastNameProperty];
     return cell;
 }
 @end

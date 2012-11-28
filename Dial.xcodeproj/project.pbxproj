@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3816647C8C00227BC0 /* DALABAddressBook.m */; };
-		03084F3C166488D200227BC0 /* DALABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3B166488D200227BC0 /* DALABPerson.m */; };
 		03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03084F3D1664947F00227BC0 /* AddressBook.framework */; };
 		037534491662D6C1006BAACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037534481662D6C1006BAACF /* UIKit.framework */; };
 		0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344A1662D6C1006BAACF /* Foundation.framework */; };
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
 		037534531662D6C1006BAACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037534511662D6C1006BAACF /* InfoPlist.strings */; };
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
-		03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AAE16650FED007809D3 /* DALABHelpers.m */; };
-		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
 		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
+		039BECFA166544BE00FFF5F7 /* _TTCDLinkedRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECED166544BE00FFF5F7 /* _TTCDLinkedRecord.m */; };
+		039BECFB166544BE00FFF5F7 /* _TTCDUnifiedRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECEF166544BE00FFF5F7 /* _TTCDUnifiedRecord.m */; };
+		039BECFC166544BE00FFF5F7 /* TTCDLinkedRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECF1166544BE00FFF5F7 /* TTCDLinkedRecord.m */; };
+		039BECFD166544BE00FFF5F7 /* TTCDUnifiedRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECF3166544BE00FFF5F7 /* TTCDUnifiedRecord.m */; };
+		039BECFE166544BE00FFF5F7 /* TTUnifiedAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECF5166544BE00FFF5F7 /* TTUnifiedAddressBook.m */; };
+		039BED00166544BE00FFF5F7 /* TTUnifiedCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BECF9166544BE00FFF5F7 /* TTUnifiedCard.m */; };
+		039BED05166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BED04166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.m */; };
+		039BED071665470C00FFF5F7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039BED061665470C00FFF5F7 /* CoreData.framework */; };
+		039BED0A166566B100FFF5F7 /* UIImage+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 039BED09166566B100FFF5F7 /* UIImage+DALAdditions.m */; };
 		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
 		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
 		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
@@ -37,10 +42,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03084F3716647C8C00227BC0 /* DALABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABAddressBook.h; path = Classes/DALABAddressBook.h; sourceTree = "<group>"; };
-		03084F3816647C8C00227BC0 /* DALABAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABAddressBook.m; path = Classes/DALABAddressBook.m; sourceTree = "<group>"; };
-		03084F3A166488D200227BC0 /* DALABPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABPerson.h; path = Classes/DALABPerson.h; sourceTree = "<group>"; };
-		03084F3B166488D200227BC0 /* DALABPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABPerson.m; path = Classes/DALABPerson.m; sourceTree = "<group>"; };
 		03084F3D1664947F00227BC0 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		037534441662D6C1006BAACF /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		037534481662D6C1006BAACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -50,14 +51,28 @@
 		037534521662D6C1006BAACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		037534541662D6C1006BAACF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		037534561662D6C1006BAACF /* Dial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dial-Prefix.pch"; sourceTree = "<group>"; };
-		03942AAD16650FED007809D3 /* DALABHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABHelpers.h; path = Classes/DALABHelpers.h; sourceTree = "<group>"; };
-		03942AAE16650FED007809D3 /* DALABHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABHelpers.m; path = Classes/DALABHelpers.m; sourceTree = "<group>"; };
-		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
-		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
 		03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+DALAdditions.m"; path = "Categories/NSMutableArray+DALAdditions.m"; sourceTree = "<group>"; };
 		03942AB8166521AE007809D3 /* DALImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALImageCache.h; path = Classes/DALImageCache.h; sourceTree = "<group>"; };
 		03942AB9166521AE007809D3 /* DALImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALImageCache.m; path = Classes/DALImageCache.m; sourceTree = "<group>"; };
+		039BECEC166544BE00FFF5F7 /* _TTCDLinkedRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TTCDLinkedRecord.h; sourceTree = "<group>"; };
+		039BECED166544BE00FFF5F7 /* _TTCDLinkedRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TTCDLinkedRecord.m; sourceTree = "<group>"; };
+		039BECEE166544BE00FFF5F7 /* _TTCDUnifiedRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TTCDUnifiedRecord.h; sourceTree = "<group>"; };
+		039BECEF166544BE00FFF5F7 /* _TTCDUnifiedRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TTCDUnifiedRecord.m; sourceTree = "<group>"; };
+		039BECF0166544BE00FFF5F7 /* TTCDLinkedRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCDLinkedRecord.h; sourceTree = "<group>"; };
+		039BECF1166544BE00FFF5F7 /* TTCDLinkedRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCDLinkedRecord.m; sourceTree = "<group>"; };
+		039BECF2166544BE00FFF5F7 /* TTCDUnifiedRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCDUnifiedRecord.h; sourceTree = "<group>"; };
+		039BECF3166544BE00FFF5F7 /* TTCDUnifiedRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCDUnifiedRecord.m; sourceTree = "<group>"; };
+		039BECF4166544BE00FFF5F7 /* TTUnifiedAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTUnifiedAddressBook.h; path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/AddressBook/TTUnifiedAddressBook.h; sourceTree = SOURCE_ROOT; };
+		039BECF5166544BE00FFF5F7 /* TTUnifiedAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTUnifiedAddressBook.m; path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/AddressBook/TTUnifiedAddressBook.m; sourceTree = SOURCE_ROOT; };
+		039BECF8166544BE00FFF5F7 /* TTUnifiedCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTUnifiedCard.h; path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/AddressBook/TTUnifiedCard.h; sourceTree = SOURCE_ROOT; };
+		039BECF9166544BE00FFF5F7 /* TTUnifiedCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTUnifiedCard.m; path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/AddressBook/TTUnifiedCard.m; sourceTree = SOURCE_ROOT; };
+		039BED011665457E00FFF5F7 /* TwelveTwentyToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwelveTwentyToolkit.h; path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/TwelveTwentyToolkit.h; sourceTree = SOURCE_ROOT; };
+		039BED03166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+TTBatchManipulation.h"; path = "External/TwelveTwentyToolkit/TwelveTwentyToolkit/CoreData/NSManagedObjectContext+TTBatchManipulation.h"; sourceTree = SOURCE_ROOT; };
+		039BED04166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+TTBatchManipulation.m"; path = "External/TwelveTwentyToolkit/TwelveTwentyToolkit/CoreData/NSManagedObjectContext+TTBatchManipulation.m"; sourceTree = SOURCE_ROOT; };
+		039BED061665470C00FFF5F7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		039BED08166566B100FFF5F7 /* UIImage+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+DALAdditions.h"; path = "Categories/UIImage+DALAdditions.h"; sourceTree = "<group>"; };
+		039BED09166566B100FFF5F7 /* UIImage+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+DALAdditions.m"; path = "Categories/UIImage+DALAdditions.m"; sourceTree = "<group>"; };
 		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
 		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
 		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039BED071665470C00FFF5F7 /* CoreData.framework in Frameworks */,
 				03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */,
 				037534491662D6C1006BAACF /* UIKit.framework in Frameworks */,
 				0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */,
@@ -94,21 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03084F3516647C6700227BC0 /* Address Book */ = {
-			isa = PBXGroup;
-			children = (
-				03084F3716647C8C00227BC0 /* DALABAddressBook.h */,
-				03084F3816647C8C00227BC0 /* DALABAddressBook.m */,
-				03084F3A166488D200227BC0 /* DALABPerson.h */,
-				03084F3B166488D200227BC0 /* DALABPerson.m */,
-				03942AAD16650FED007809D3 /* DALABHelpers.h */,
-				03942AAE16650FED007809D3 /* DALABHelpers.m */,
-				03942AB0166511B1007809D3 /* DALABMultiValueObject.h */,
-				03942AB1166511B1007809D3 /* DALABMultiValueObject.m */,
-			);
-			name = "Address Book";
-			sourceTree = "<group>";
-		};
 		037534391662D6C0006BAACF = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +130,7 @@
 		037534471662D6C1006BAACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				039BED061665470C00FFF5F7 /* CoreData.framework */,
 				03084F3D1664947F00227BC0 /* AddressBook.framework */,
 				037534481662D6C1006BAACF /* UIKit.framework */,
 				0375344A1662D6C1006BAACF /* Foundation.framework */,
@@ -140,10 +142,10 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
+				039BECE81665445700FFF5F7 /* External */,
 				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
 				03942AB716652145007809D3 /* Utilities */,
-				03084F3516647C6700227BC0 /* Address Book */,
 				03B94F5216644DF1007EDF4F /* View Controllers */,
 				03B94F7116645111007EDF4F /* Views */,
 				03B94F5F16644E62007EDF4F /* DALAppDelegate.h */,
@@ -169,6 +171,8 @@
 			children = (
 				03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */,
 				03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */,
+				039BED08166566B100FFF5F7 /* UIImage+DALAdditions.h */,
+				039BED09166566B100FFF5F7 /* UIImage+DALAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -180,6 +184,61 @@
 				03942AB9166521AE007809D3 /* DALImageCache.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		039BECE81665445700FFF5F7 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				039BECE9166544B000FFF5F7 /* TTUnifiedAddressBook */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		039BECE9166544B000FFF5F7 /* TTUnifiedAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				039BED02166546DD00FFF5F7 /* Categories */,
+				039BECEA166544BE00FFF5F7 /* Entities */,
+				039BED011665457E00FFF5F7 /* TwelveTwentyToolkit.h */,
+				039BECF4166544BE00FFF5F7 /* TTUnifiedAddressBook.h */,
+				039BECF5166544BE00FFF5F7 /* TTUnifiedAddressBook.m */,
+				039BECF8166544BE00FFF5F7 /* TTUnifiedCard.h */,
+				039BECF9166544BE00FFF5F7 /* TTUnifiedCard.m */,
+			);
+			name = TTUnifiedAddressBook;
+			sourceTree = "<group>";
+		};
+		039BECEA166544BE00FFF5F7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				039BECEB166544BE00FFF5F7 /* Abstract */,
+				039BECF0166544BE00FFF5F7 /* TTCDLinkedRecord.h */,
+				039BECF1166544BE00FFF5F7 /* TTCDLinkedRecord.m */,
+				039BECF2166544BE00FFF5F7 /* TTCDUnifiedRecord.h */,
+				039BECF3166544BE00FFF5F7 /* TTCDUnifiedRecord.m */,
+			);
+			name = Entities;
+			path = External/TwelveTwentyToolkit/TwelveTwentyToolkit/AddressBook/Entities;
+			sourceTree = SOURCE_ROOT;
+		};
+		039BECEB166544BE00FFF5F7 /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				039BECEC166544BE00FFF5F7 /* _TTCDLinkedRecord.h */,
+				039BECED166544BE00FFF5F7 /* _TTCDLinkedRecord.m */,
+				039BECEE166544BE00FFF5F7 /* _TTCDUnifiedRecord.h */,
+				039BECEF166544BE00FFF5F7 /* _TTCDUnifiedRecord.m */,
+			);
+			path = Abstract;
+			sourceTree = "<group>";
+		};
+		039BED02166546DD00FFF5F7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				039BED03166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.h */,
+				039BED04166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		03B94F5216644DF1007EDF4F /* View Controllers */ = {
@@ -299,12 +358,16 @@
 				03B94F6116644E62007EDF4F /* DALAppDelegate.m in Sources */,
 				03B94F6416644EA8007EDF4F /* DALViewController.m in Sources */,
 				03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */,
-				03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */,
-				03084F3C166488D200227BC0 /* DALABPerson.m in Sources */,
-				03942AAF16650FED007809D3 /* DALABHelpers.m in Sources */,
-				03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */,
 				03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */,
 				03942ABA166521AE007809D3 /* DALImageCache.m in Sources */,
+				039BECFA166544BE00FFF5F7 /* _TTCDLinkedRecord.m in Sources */,
+				039BECFB166544BE00FFF5F7 /* _TTCDUnifiedRecord.m in Sources */,
+				039BECFC166544BE00FFF5F7 /* TTCDLinkedRecord.m in Sources */,
+				039BECFD166544BE00FFF5F7 /* TTCDUnifiedRecord.m in Sources */,
+				039BECFE166544BE00FFF5F7 /* TTUnifiedAddressBook.m in Sources */,
+				039BED00166544BE00FFF5F7 /* TTUnifiedCard.m in Sources */,
+				039BED05166546FB00FFF5F7 /* NSManagedObjectContext+TTBatchManipulation.m in Sources */,
+				039BED0A166566B100FFF5F7 /* UIImage+DALAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

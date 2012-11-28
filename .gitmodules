@@ -1,0 +1,3 @@
+[submodule "External/TwelveTwentyToolkit"]
+	path = External/TwelveTwentyToolkit
+	url = git@github.com:reactivedev/TwelveTwentyToolkit-ObjC.git

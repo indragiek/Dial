@@ -34,8 +34,8 @@ static NSString *_imageCacheDirectory;
     if ((self = [super init])) {
         self.JPEGCompressionQuality = 1.0; // Best quality
         self.maximumDiskCacheSize = 200; // MB
-        _outputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkOutputQueue", DISPATCH_QUEUE_SERIAL);
-        _inputQueue = dispatch_queue_create("com.indragie.SNRMusicKit.artworkInputQueue", DISPATCH_QUEUE_SERIAL);
+        _outputQueue = dispatch_queue_create("com.reactive.Dial.imageOutputQueue", DISPATCH_QUEUE_SERIAL);
+        _inputQueue = dispatch_queue_create("com.reactive.Dial.imageInputQueue", DISPATCH_QUEUE_SERIAL);
         [[NSFileManager defaultManager] createDirectoryAtPath:[self _imageCacheDirectory] withIntermediateDirectories:YES attributes:nil error:nil];
         __weak DALImageCache *weakSelf = self;
         dispatch_async(_inputQueue, ^{
@@ -44,12 +44,6 @@ static NSString *_imageCacheDirectory;
         });
     }
     return self;
-}
-
-- (void)dealloc
-{
-    dispatch_release(_outputQueue);
-    dispatch_release(_inputQueue);
 }
 
 #pragma mark - Public API
