@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DALSectionIndexCollectionView : UICollectionView
-
+@class DALSectionIndexCollectionView;
+@protocol DALSectionIndexCollectionViewDelegate <UICollectionViewDelegate>
+- (NSArray *)sectionIndexTitlesForCollectionView:(UICollectionView *)collectionView;
 @end
+
+@interface DALSectionIndexCollectionView : UICollectionView
+@property (nonatomic, assign) id <DALSectionIndexCollectionViewDelegate> delegate;
+@end
+
+

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DALSectionIndexListView : UIView
+@property (nonatomic, strong) NSArray *sectionIndexTitles;
 
+@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) NSShadow *textShadow;
 @end

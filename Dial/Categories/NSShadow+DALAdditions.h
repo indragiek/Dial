@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NSShadow (DALAdditions)
-
++ (NSShadow *)shadowWithColor:(UIColor *)color
+                       offset:(CGSize)offset
+                   blurRadius:(CGFloat)radius;
 @end

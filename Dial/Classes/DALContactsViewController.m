@@ -14,12 +14,8 @@
 #import "DALImageCache.h"
 #import "UIImage+DALAdditions.h"
 
-static NSString* const DALContactsBackgroundPatternImageName = @"bg";
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
-static CGFloat const DALContactsLayoutMinimumLineSpacing = 21.f;
-static CGFloat const DALContactsLayoutMinimumInteritemSpacing = 15.f;
-static CGFloat const DALContactsLayoutItemWidth = 81.f;
-static CGFloat const DALContactsLayoutItemHeight = 121.f;
+static NSString* const DALContactsCellStarImageName = @"star";
 
 @interface DALContactsViewController ()
 @property (nonatomic, strong) NSArray *people;
@@ -43,15 +39,8 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([DALContactCollectionViewCell class]) bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:DALContactsCellIdentifier];
-    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:DALContactsBackgroundPatternImageName]];
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    layout.minimumLineSpacing = DALContactsLayoutMinimumLineSpacing;
-    layout.minimumInteritemSpacing = DALContactsLayoutMinimumInteritemSpacing;
-    layout.itemSize = CGSizeMake(DALContactsLayoutItemWidth, DALContactsLayoutItemHeight);
-    layout.sectionInset = UIEdgeInsetsMake(DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing, DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing);
     
     DALABAddressBook *addressBook = [DALABAddressBook addressBook];
     void (^getPeople)() = ^(){
@@ -114,5 +103,10 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
     contactCell.firstNameLabel.text = nil;
     contactCell.lastNameLabel.text = nil;
     contactCell.imageView.image = nil;
+}
+
+- (NSArray *)sectionIndexTitlesForCollectionView:(UICollectionView *)collectionView
+{
+    return @[[UIImage imageNamed:DALContactsCellStarImageName], @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
 }
 @end
