@@ -19,7 +19,10 @@
                                                   context:nil
                                                   options:@{CIDetectorAccuracy : CIDetectorAccuracyHigh}];
     NSArray *faces = [faceDetector featuresInImage:image];
-    CGRect cropRect = (CGRect){CGPointZero, self.size};
+    // Crop the image to the width of the shortest axis
+    CGFloat cropWidth = MIN(self.size.width, self.size.height);
+    CGRect imageBounds = (CGRect){CGPointZero, self.size};
+    CGRect cropRect = CGRectIntegral(CGRectMake(CGRectGetMidX(imageBounds) - (cropWidth / 2.f), CGRectGetMidY(imageBounds) - (cropWidth / 2.f), cropWidth, cropWidth));
     if (NO) {
         // Only taking into consideration a single face here
         // Probably should design this to handle cases where there are multiple faces as well
