@@ -52,12 +52,13 @@ static DALABAddressBookNotificationHandler _changeHandler = nil;
     });
 }
 
-- (void)save:(NSError **)error
+- (BOOL)save:(NSError **)error
 {
     CFErrorRef theError = NULL;
-    ABAddressBookSave(_addressBook, &theError);
+    bool success = ABAddressBookSave(_addressBook, &theError);
     if (error)
         *error = (__bridge NSError*)theError;
+    return (BOOL)success;
 }
 
 - (void)revert
@@ -97,15 +98,21 @@ void DALExternalChangeCallback(ABAddressBookRef addressBook, CFDictionaryRef inf
     NSMutableSet *skip = [NSMutableSet set];
     [bridgedRecords enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if (![skip member:obj]) {
-            DALABPerson *person = [DALABPerson personWithRecord:(__bridge ABRecordRef)obj];
+            ABRecordRef personRecord = (__bridge ABRecordRef)obj;
             NSArray *linked = (__bridge_transfer NSArray*)ABPersonCopyArrayOfAllLinkedPeople((__bridge ABRecordRef)obj);
+            NSMutableArray *linkedPeople = nil;
             if ([linked count] > 1) {
                 [skip addObjectsFromArray:linked];
+                linkedPeople = [NSMutableArray arrayWithCapacity:[linked count]];
                 [linked enumerateObjectsUsingBlock:^(id obj1, NSUInteger idx1, BOOL *stop1) {
-                    DALABPerson *linkedPerson = [DALABPerson personWithRecord:(__bridge ABRecordRef)obj];
-                    [person mergePerson:linkedPerson];
+                    ABRecordRef linkedRecord = (__bridge ABRecordRef)obj1;
+                    if (linkedRecord != personRecord) {
+                        DALABPerson *linkedPerson = [[DALABPerson alloc] initWithRecord:linkedRecord linkedPeople:nil];
+                        [linkedPeople addObject:linkedPerson];
+                    }
                 }];
             }
+            DALABPerson *person = [[DALABPerson alloc] initWithRecord:personRecord linkedPeople:linkedPeople];
             [people addObject:person];
         }
     }];

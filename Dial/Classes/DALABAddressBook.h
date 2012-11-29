@@ -20,7 +20,7 @@ typedef void(^DALABAddressBookNotificationHandler)(NSDictionary *info);
 + (instancetype)addressBook;
 - (void)requestAuthorizationWithCompletionHandler:(void(^)(DALABAddressBook *addressBook, BOOL granted, NSError *error))completionHandler;
 
-- (void)save:(NSError **)error;
+- (BOOL)save:(NSError **)error;
 - (void)revert;
 
 - (void)registerForChangeNotificationsWithHandler:(DALABAddressBookNotificationHandler)handler;

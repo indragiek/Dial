@@ -11,6 +11,8 @@
 
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
+#import "DALImageCache.h"
+#import "UIImage+DALAdditions.h"
 
 static NSString* const DALContactsBackgroundPatternImageName = @"bg";
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
@@ -23,12 +25,25 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
 @property (nonatomic, strong) NSArray *people;
 @end
 
-@implementation DALContactsViewController
+@implementation DALContactsViewController {
+    dispatch_queue_t _imageQueue;
+    DALImageCache *_imageCache;
+}
 #pragma mark - UIViewController
+
+- (id)init
+{
+    if ((self = [super init])) {
+        _imageQueue = dispatch_queue_create("com.reactive.Dial.imageQueue", DISPATCH_QUEUE_SERIAL);
+        _imageCache = [DALImageCache new];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([DALContactCollectionViewCell class]) bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:DALContactsCellIdentifier];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:DALContactsBackgroundPatternImageName]];
@@ -66,6 +81,38 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
     DALABPerson *person = [self.people objectAtIndex:indexPath.row];
     cell.firstNameLabel.text = person.firstName;
     cell.lastNameLabel.text = person.lastName;
+    void (^setImageViewImage)(UIImage*) = ^(UIImage *image){
+        DALContactCollectionViewCell *aCell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        aCell.imageView.image = image;
+    };
+    [_imageCache fetchImageForKey:person.identifier completionHandler:^(UIImage *image) {
+        if (image) {
+            setImageViewImage(image);
+        } else {
+            NSData *imageData = person.imageData;
+            if (imageData) {
+                CGFloat imageWidth = CGRectGetWidth(cell.imageView.bounds);
+                dispatch_async(_imageQueue, ^{
+                    @autoreleasepool {
+                        UIImage *image = [[UIImage alloc] initWithData:imageData];
+                        UIImage *processed = [image circularImageCroppedToFaceWithWidth:imageWidth];
+                        [_imageCache setCachedImage:processed forKey:person.identifier];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            setImageViewImage(processed);
+                        });
+                    }
+                });
+            }
+        }
+    }];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DALContactCollectionViewCell *contactCell = (DALContactCollectionViewCell *)cell;
+    contactCell.firstNameLabel.text = nil;
+    contactCell.lastNameLabel.text = nil;
+    contactCell.imageView.image = nil;
 }
 @end

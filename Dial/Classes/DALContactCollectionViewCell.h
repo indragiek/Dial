@@ -11,4 +11,5 @@
 @interface DALContactCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UILabel *firstNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *lastNameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @end

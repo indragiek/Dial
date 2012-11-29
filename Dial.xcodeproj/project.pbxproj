@@ -10,6 +10,9 @@
 		03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3816647C8C00227BC0 /* DALABAddressBook.m */; };
 		03084F3C166488D200227BC0 /* DALABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3B166488D200227BC0 /* DALABPerson.m */; };
 		03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03084F3D1664947F00227BC0 /* AddressBook.framework */; };
+		03199F401665E0E400C1B57B /* UIImage+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03199F3F1665E0E400C1B57B /* UIImage+DALAdditions.m */; };
+		03199F481665E1B100C1B57B /* CoreGraphics+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */; };
+		03199F4A1665E7B700C1B57B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03199F491665E7B600C1B57B /* CoreImage.framework */; };
 		037534491662D6C1006BAACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037534481662D6C1006BAACF /* UIKit.framework */; };
 		0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344A1662D6C1006BAACF /* Foundation.framework */; };
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
@@ -42,6 +45,11 @@
 		03084F3A166488D200227BC0 /* DALABPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABPerson.h; path = Classes/DALABPerson.h; sourceTree = "<group>"; };
 		03084F3B166488D200227BC0 /* DALABPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABPerson.m; path = Classes/DALABPerson.m; sourceTree = "<group>"; };
 		03084F3D1664947F00227BC0 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		03199F3E1665E0E400C1B57B /* UIImage+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+DALAdditions.h"; path = "Categories/UIImage+DALAdditions.h"; sourceTree = "<group>"; };
+		03199F3F1665E0E400C1B57B /* UIImage+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+DALAdditions.m"; path = "Categories/UIImage+DALAdditions.m"; sourceTree = "<group>"; };
+		03199F461665E1B100C1B57B /* CoreGraphics+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CoreGraphics+DALAdditions.h"; path = "Categories/CoreGraphics+DALAdditions.h"; sourceTree = "<group>"; };
+		03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CoreGraphics+DALAdditions.m"; path = "Categories/CoreGraphics+DALAdditions.m"; sourceTree = "<group>"; };
+		03199F491665E7B600C1B57B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		037534441662D6C1006BAACF /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		037534481662D6C1006BAACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0375344A1662D6C1006BAACF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03199F4A1665E7B700C1B57B /* CoreImage.framework in Frameworks */,
 				03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */,
 				037534491662D6C1006BAACF /* UIKit.framework in Frameworks */,
 				0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */,
@@ -129,6 +138,7 @@
 		037534471662D6C1006BAACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03199F491665E7B600C1B57B /* CoreImage.framework */,
 				03084F3D1664947F00227BC0 /* AddressBook.framework */,
 				037534481662D6C1006BAACF /* UIKit.framework */,
 				0375344A1662D6C1006BAACF /* Foundation.framework */,
@@ -169,6 +179,10 @@
 			children = (
 				03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */,
 				03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */,
+				03199F3E1665E0E400C1B57B /* UIImage+DALAdditions.h */,
+				03199F3F1665E0E400C1B57B /* UIImage+DALAdditions.m */,
+				03199F461665E1B100C1B57B /* CoreGraphics+DALAdditions.h */,
+				03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -305,6 +319,8 @@
 				03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */,
 				03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */,
 				03942ABA166521AE007809D3 /* DALImageCache.m in Sources */,
+				03199F401665E0E400C1B57B /* UIImage+DALAdditions.m in Sources */,
+				03199F481665E1B100C1B57B /* CoreGraphics+DALAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

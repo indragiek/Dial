@@ -10,10 +10,13 @@
 #import <AddressBook/AddressBook.h>
 
 @interface DALABPerson : NSObject
-+ (instancetype)personWithRecord:(ABRecordRef)record;
-- (void)mergePerson:(DALABPerson *)person;
+- (id)initWithRecord:(ABRecordRef)record linkedPeople:(NSArray *)linked;
 
 @property (nonatomic, readonly) ABRecordRef record;
+@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSArray *linkedPeople;
+@property (nonatomic, readonly) BOOL hasImageData;
+
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
 @property (nonatomic, copy) NSArray *emails;

@@ -13,9 +13,8 @@
 #import "NSMutableArray+DALAdditions.h"
 
 @implementation DALABPerson
-@synthesize imageData = _imageData;
 
-- (id)initWithRecord:(ABRecordRef)record
+- (id)initWithRecord:(ABRecordRef)record linkedPeople:(NSArray *)linked
 {
     if ((self = [super init])) {
         _record = record;
@@ -27,17 +26,18 @@
         _phoneNumbers = DALABMultiValueObjectArrayWithMultiValue(phones);
         CFRelease(emails);
         CFRelease(phones);
+        _linkedPeople = linked;
+        [self _mergeLinkedPeople];
     }
     return self;
 }
 
-+ (instancetype)personWithRecord:(ABRecordRef)record
-{
-    DALABPerson *person = [[DALABPerson alloc] initWithRecord:record];
-    return person;
-}
-
 #pragma mark - Accessors
+
+- (NSString *)identifier
+{
+    return [@(ABRecordGetRecordID(_record)) stringValue];
+}
 
 - (void)setFirstName:(NSString *)firstName
 {
@@ -58,19 +58,36 @@
 {
     ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, phoneNumbers);
     ABRecordSetValue(_record, kABPersonPhoneProperty, multiValue, NULL);
+    CFRelease(multiValue);
 }
 
 - (void)setEmails:(NSArray *)emails
 {
     ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, emails);
     ABRecordSetValue(_record, kABPersonEmailProperty, multiValue, NULL);
+    CFRelease(multiValue);
+}
+
+- (BOOL)hasImageData
+{
+    return ABPersonHasImageData(_record);
 }
 
 - (NSData *)imageData
 {
-    if (!_imageData && ABPersonHasImageData(_record))
-        _imageData = (__bridge_transfer NSData*)ABPersonCopyImageData(_record);
-    return _imageData;
+    if (self.hasImageData) {
+        return (__bridge NSData*)ABPersonCopyImageData(_record);
+    } else if ([self.linkedPeople count]) {
+        __block NSData *imageData = nil;
+        [self.linkedPeople enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj hasImageData]) {
+                imageData = [obj imageData];
+                *stop = YES;
+            }
+        }];
+        return imageData;
+    }
+    return nil;
 }
 
 - (void)setImageData:(NSData *)imageData
@@ -78,15 +95,18 @@
     ABPersonSetImageData(_record, (__bridge CFDataRef)imageData, NULL);
 }
 
-- (void)mergePerson:(DALABPerson *)person
+- (void)_mergeLinkedPeople
 {
     NSMutableArray *emails = [NSMutableArray arrayWithArray:self.emails];
     NSMutableArray *phones = [NSMutableArray arrayWithArray:self.phoneNumbers];
-    [emails addObjectsFromArray:person.emails];
-    [phones addObjectsFromArray:person.phoneNumbers];
+    [self.linkedPeople enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [emails addObjectsFromArray:[obj emails]];
+        [phones addObjectsFromArray:[obj phoneNumbers]];
+    }];
     [emails removeDuplicates];
     [phones removeDuplicates];
     _emails = emails;
     _phoneNumbers = phones;
 }
+
 @end
