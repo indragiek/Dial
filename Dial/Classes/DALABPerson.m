@@ -8,7 +8,6 @@
 
 #import "DALABPerson.h"
 #import "DALABAddressBook.h"
-#import "DALABHelpers.h"
 
 #import "NSMutableArray+DALAdditions.h"
 
@@ -16,16 +15,11 @@
 
 - (id)initWithRecord:(ABRecordRef)record linkedPeople:(NSArray *)linked
 {
-    if ((self = [super init])) {
-        _record = record;
-        _firstName = (__bridge_transfer NSString*)ABRecordCopyValue(_record, kABPersonFirstNameProperty);
-        _lastName = (__bridge_transfer NSString*)ABRecordCopyValue(_record, kABPersonLastNameProperty);
-        ABMultiValueRef emails = ABRecordCopyValue(_record, kABPersonEmailProperty);
-        _emails = DALABMultiValueObjectArrayWithMultiValue(emails);
-        ABMultiValueRef phones = ABRecordCopyValue(_record, kABPersonPhoneProperty);
-        _phoneNumbers = DALABMultiValueObjectArrayWithMultiValue(phones);
-        CFRelease(emails);
-        CFRelease(phones);
+    if ((self = [super initWithRecord:record])) {
+        _firstName = [self valueForProperty:kABPersonFirstNameProperty];
+        _lastName = [self valueForProperty:kABPersonLastNameProperty];
+        _emails = [self arrayForProperty:kABPersonEmailProperty];
+        _phoneNumbers = [self arrayForProperty:kABPersonPhoneProperty];
         _linkedPeople = linked;
         [self _mergeLinkedPeople];
     }
@@ -34,49 +28,35 @@
 
 #pragma mark - Accessors
 
-- (NSString *)identifier
-{
-    return [@(ABRecordGetRecordID(_record)) stringValue];
-}
-
 - (void)setFirstName:(NSString *)firstName
 {
-    ABRecordSetValue(_record, kABPersonFirstNameProperty, (__bridge CFStringRef)firstName, NULL);
+    [self setValue:firstName forProperty:kABPersonFirstNameProperty error:nil];
 }
 
 - (void)setLastName:(NSString *)lastName
 {
-    ABRecordSetValue(_record, kABPersonLastNameProperty, (__bridge CFStringRef)lastName, NULL);
-}
-
-- (void)setEmail:(NSString *)email
-{
-    ABRecordSetValue(_record, kABPersonEmailProperty, (__bridge CFStringRef)email, NULL);
+    [self setValue:lastName forProperty:kABPersonLastNameProperty error:nil];
 }
 
 - (void)setPhoneNumbers:(NSArray *)phoneNumbers
 {
-    ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, phoneNumbers);
-    ABRecordSetValue(_record, kABPersonPhoneProperty, multiValue, NULL);
-    CFRelease(multiValue);
+    [self setArray:phoneNumbers forProperty:kABPersonPhoneProperty error:nil];
 }
 
 - (void)setEmails:(NSArray *)emails
 {
-    ABMultiValueRef multiValue = DALABCreateMultiValueWithArray(kABMultiStringPropertyType, emails);
-    ABRecordSetValue(_record, kABPersonEmailProperty, multiValue, NULL);
-    CFRelease(multiValue);
+    [self setArray:emails forProperty:kABPersonEmailProperty error:nil];
 }
 
 - (BOOL)hasImageData
 {
-    return ABPersonHasImageData(_record);
+    return ABPersonHasImageData(self.record);
 }
 
 - (NSData *)imageData
 {
     if (self.hasImageData) {
-        return (__bridge NSData*)ABPersonCopyImageData(_record);
+        return (__bridge NSData*)ABPersonCopyImageData(self.record);
     } else if ([self.linkedPeople count]) {
         __block NSData *imageData = nil;
         [self.linkedPeople enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -92,8 +72,10 @@
 
 - (void)setImageData:(NSData *)imageData
 {
-    ABPersonSetImageData(_record, (__bridge CFDataRef)imageData, NULL);
+    ABPersonSetImageData(self.record, (__bridge CFDataRef)imageData, NULL);
 }
+
+#pragma mark - Private
 
 - (void)_mergeLinkedPeople
 {

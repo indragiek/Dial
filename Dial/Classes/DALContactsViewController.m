@@ -85,7 +85,7 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
         DALContactCollectionViewCell *aCell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
         aCell.imageView.image = image;
     };
-    [_imageCache fetchImageForKey:person.identifier completionHandler:^(UIImage *image) {
+    [_imageCache fetchImageForKey:person.compositeName completionHandler:^(UIImage *image) {
         if (image) {
             setImageViewImage(image);
         } else {
@@ -96,7 +96,7 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
                     @autoreleasepool {
                         UIImage *image = [[UIImage alloc] initWithData:imageData];
                         UIImage *processed = [image circularImageCroppedToFaceWithWidth:imageWidth];
-                        [_imageCache setCachedImage:processed forKey:person.identifier];
+                        [_imageCache setCachedImage:processed forKey:person.compositeName];
                         dispatch_async(dispatch_get_main_queue(), ^{
                             setImageViewImage(processed);
                         });

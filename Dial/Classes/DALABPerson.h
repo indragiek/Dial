@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AddressBook/AddressBook.h>
+#import "DALABRecord.h"
 
-@interface DALABPerson : NSObject
+@interface DALABPerson : DALABRecord
 - (id)initWithRecord:(ABRecordRef)record linkedPeople:(NSArray *)linked;
 
-@property (nonatomic, readonly) ABRecordRef record;
-@property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSArray *linkedPeople;
 @property (nonatomic, readonly) BOOL hasImageData;
 
