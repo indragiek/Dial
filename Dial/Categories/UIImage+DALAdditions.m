@@ -52,11 +52,8 @@
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, width), NO, scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGRect ellipseRect = CGRectMake(0.f, 0.f, width, width);
-    // Crop it to an elliptical shape
-    CGContextAddEllipseInRect(context, ellipseRect);
-    CGContextClip(context);
-    [self drawInRect:ellipseRect fromRect:cropRect blendMode:kCGBlendModeNormal alpha:1.f];
+    CGRect scaledRect = CGRectMake(0.f, 0.f, width, width);
+    [self drawInRect:scaledRect fromRect:cropRect blendMode:kCGBlendModeNormal alpha:1.f];
     UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return croppedImage;

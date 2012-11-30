@@ -40,7 +40,6 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
     [super didMoveToSuperview];
     [_indexListView removeFromSuperview];
     CGRect collectionViewFrame, listViewFrame;
-    NSLog(@"%@", NSStringFromCGRect(self.frame));
     CGRectDivide(self.frame, &listViewFrame, &collectionViewFrame, DALSectionIndexListViewWidth, CGRectMaxXEdge);
     self.frame = collectionViewFrame;
     _indexListView.frame = listViewFrame;
