@@ -14,7 +14,7 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
 @implementation DALSectionIndexCollectionView {
     DALSectionIndexListView *_indexListView;
 }
-@dynamic delegate;
+@dynamic dataSource;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,8 +49,8 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
 - (void)reloadData
 {
     [super reloadData];
-    if ([self.delegate respondsToSelector:@selector(sectionIndexTitlesForCollectionView:)]) {
-        NSArray *titles = [self.delegate sectionIndexTitlesForCollectionView:self];
+    if ([self.dataSource respondsToSelector:@selector(sectionIndexTitlesForCollectionView:)]) {
+        NSArray *titles = [self.dataSource sectionIndexTitlesForCollectionView:self];
         NSUInteger numberOfTitles = [titles count];
         NSUInteger numberOfSections = [self numberOfSections];
         if (numberOfTitles && numberOfTitles != numberOfSections) {

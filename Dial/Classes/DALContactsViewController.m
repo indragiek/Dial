@@ -8,6 +8,7 @@
 
 #import "DALContactsViewController.h"
 #import "DALContactCollectionViewCell.h"
+#import "DALContactsCollectionView.h"
 
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
@@ -108,5 +109,13 @@ static NSString* const DALContactsCellStarImageName = @"star";
 - (NSArray *)sectionIndexTitlesForCollectionView:(UICollectionView *)collectionView
 {
     return @[[UIImage imageNamed:DALContactsCellStarImageName], @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    DALABPerson *person = [self.people objectAtIndex:indexPath.row];
+    NSLog(@"Long press on %@ %@", person.firstName, person.lastName);
 }
 @end

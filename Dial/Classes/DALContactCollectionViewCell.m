@@ -10,10 +10,9 @@
 
 @implementation DALContactCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super initWithFrame:frame])) {
-        self.contentView.backgroundColor = [UIColor blackColor];
+    if ((self = [super initWithCoder:aDecoder])) {
     }
     return self;
 }

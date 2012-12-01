@@ -15,6 +15,7 @@ static CGFloat const DALContactsLayoutItemHeight = 121.f;
 static NSString* const DALContactsBackgroundPatternImageName = @"bg";
 
 @implementation DALContactsCollectionView
+@dynamic delegate;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -25,8 +26,24 @@ static NSString* const DALContactsBackgroundPatternImageName = @"bg";
         layout.minimumInteritemSpacing = DALContactsLayoutMinimumInteritemSpacing;
         layout.itemSize = CGSizeMake(DALContactsLayoutItemWidth, DALContactsLayoutItemHeight);
         layout.sectionInset = UIEdgeInsetsMake(DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing, DALContactsLayoutMinimumLineSpacing, 0.f);
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_handleLongPress:)];
+        [self addGestureRecognizer:longPress];
     }
     return self;
+}
+
+#pragma mark - Event Handling
+
+- (void)_handleLongPress:(UIGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint location = [recognizer locationInView:self];
+        NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
+        if (indexPath && [self.delegate respondsToSelector:@selector(collectionView:longPressOnCellAtIndexPath:)]) {
+            [self.delegate collectionView:self longPressOnCellAtIndexPath:indexPath];
+        }
+    }
 }
 
 @end

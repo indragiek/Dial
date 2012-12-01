@@ -8,6 +8,12 @@
 
 #import "DALSectionIndexCollectionView.h"
 
-@interface DALContactsCollectionView : DALSectionIndexCollectionView
+@class DALContactsCollectionView;
+@protocol DALContactsCollectionViewDelegate <UICollectionViewDelegate>
+@optional
+- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath;
+@end
 
+@interface DALContactsCollectionView : DALSectionIndexCollectionView
+@property (nonatomic, assign) id<DALContactsCollectionViewDelegate> delegate;
 @end
