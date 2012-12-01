@@ -26,6 +26,9 @@
 		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
 		03B265491669DA940098948B /* UIView+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B265481669DA940098948B /* UIView+DALAdditions.m */; };
 		03B2654B1669DAD40098948B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B2654A1669DAD40098948B /* QuartzCore.framework */; };
+		03B265521669DD430098948B /* DALCircularMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B265511669DD430098948B /* DALCircularMenu.m */; };
+		03B265551669DE350098948B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B265531669DE350098948B /* placeholder.png */; };
+		03B265561669DE350098948B /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B265541669DE350098948B /* placeholder@2x.png */; };
 		03B94F5616644E12007EDF4F /* DALContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F5416644E12007EDF4F /* DALContactsViewController.m */; };
 		03B94F5716644E12007EDF4F /* DALContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5516644E12007EDF4F /* DALContactsViewController.xib */; };
 		03B94F5C16644E4E007EDF4F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F5916644E4E007EDF4F /* Default-568h@2x.png */; };
@@ -81,6 +84,10 @@
 		03B265471669DA940098948B /* UIView+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DALAdditions.h"; path = "Categories/UIView+DALAdditions.h"; sourceTree = "<group>"; };
 		03B265481669DA940098948B /* UIView+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DALAdditions.m"; path = "Categories/UIView+DALAdditions.m"; sourceTree = "<group>"; };
 		03B2654A1669DAD40098948B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		03B265501669DD430098948B /* DALCircularMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALCircularMenu.h; path = Classes/DALCircularMenu.h; sourceTree = "<group>"; };
+		03B265511669DD430098948B /* DALCircularMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALCircularMenu.m; path = Classes/DALCircularMenu.m; sourceTree = "<group>"; };
+		03B265531669DE350098948B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = Resources/placeholder.png; sourceTree = SOURCE_ROOT; };
+		03B265541669DE350098948B /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "placeholder@2x.png"; path = "Resources/placeholder@2x.png"; sourceTree = SOURCE_ROOT; };
 		03B94F5316644E12007EDF4F /* DALContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactsViewController.h; path = Classes/DALContactsViewController.h; sourceTree = "<group>"; };
 		03B94F5416644E12007EDF4F /* DALContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactsViewController.m; path = Classes/DALContactsViewController.m; sourceTree = "<group>"; };
 		03B94F5516644E12007EDF4F /* DALContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactsViewController.xib; path = Classes/DALContactsViewController.xib; sourceTree = "<group>"; };
@@ -242,6 +249,8 @@
 		03B94F5816644E47007EDF4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03B265531669DE350098948B /* placeholder.png */,
+				03B265541669DE350098948B /* placeholder@2x.png */,
 				03B94F651664503F007EDF4F /* porthole.png */,
 				03B94F661664503F007EDF4F /* porthole@2x.png */,
 				03B94F671664503F007EDF4F /* bg.png */,
@@ -269,6 +278,8 @@
 				03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */,
 				0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */,
 				0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */,
+				03B265501669DD430098948B /* DALCircularMenu.h */,
+				03B265511669DD430098948B /* DALCircularMenu.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -337,6 +348,8 @@
 				03B94F6F1664503F007EDF4F /* star@2x.png in Resources */,
 				03B94F701664503F007EDF4F /* bg@2x.png in Resources */,
 				03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */,
+				03B265551669DE350098948B /* placeholder.png in Resources */,
+				03B265561669DE350098948B /* placeholder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +380,7 @@
 				034D81FE16699C16009D49BE /* UIImage+ProportionalFill.m in Sources */,
 				0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */,
 				03B265491669DA940098948B /* UIView+DALAdditions.m in Sources */,
+				03B265521669DD430098948B /* DALCircularMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

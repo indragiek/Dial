@@ -20,6 +20,7 @@
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALContactsCellStarImageName = @"star";
+static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
 static CGFloat const DALContactsAnimationDuration = 0.25f;
 
 @interface DALContactsViewController ()
@@ -99,6 +100,8 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
                         });
                     }
                 });
+            } else {
+                cell.imageView.image = [UIImage imageNamed:DALContactsCellPlaceholderImageName];
             }
         }
     }];
