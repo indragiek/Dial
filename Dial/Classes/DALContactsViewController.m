@@ -12,7 +12,7 @@
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
 #import "DALImageCache.h"
-#import "UIImage+DALAdditions.h"
+#import "UIImage+ProportionalFill.h"
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALContactsCellStarImageName = @"star";
@@ -84,7 +84,7 @@ static NSString* const DALContactsCellStarImageName = @"star";
                 dispatch_async(_imageQueue, ^{
                     @autoreleasepool {
                         UIImage *image = [[UIImage alloc] initWithData:imageData];
-                        UIImage *processed = [image circularImageCroppedToFaceWithWidth:imageWidth];
+                        UIImage *processed = [image imageCroppedToFitSize:CGSizeMake(imageWidth, imageWidth)];
                         [_imageCache setCachedImage:processed forKey:person.compositeName];
                         dispatch_async(dispatch_get_main_queue(), ^{
                             setImageViewImage(processed);

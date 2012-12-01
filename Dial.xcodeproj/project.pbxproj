@@ -13,6 +13,7 @@
 		03199F401665E0E400C1B57B /* UIImage+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03199F3F1665E0E400C1B57B /* UIImage+DALAdditions.m */; };
 		03199F481665E1B100C1B57B /* CoreGraphics+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */; };
 		03199F4A1665E7B700C1B57B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03199F491665E7B600C1B57B /* CoreImage.framework */; };
+		034D81FE16699C16009D49BE /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D81FD16699C16009D49BE /* UIImage+ProportionalFill.m */; };
 		0355510716681E2F0036C528 /* NSShadow+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0355510616681E2F0036C528 /* NSShadow+DALAdditions.m */; };
 		037534491662D6C1006BAACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037534481662D6C1006BAACF /* UIKit.framework */; };
 		0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344A1662D6C1006BAACF /* Foundation.framework */; };
@@ -54,6 +55,8 @@
 		03199F461665E1B100C1B57B /* CoreGraphics+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CoreGraphics+DALAdditions.h"; path = "Categories/CoreGraphics+DALAdditions.h"; sourceTree = "<group>"; };
 		03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CoreGraphics+DALAdditions.m"; path = "Categories/CoreGraphics+DALAdditions.m"; sourceTree = "<group>"; };
 		03199F491665E7B600C1B57B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		034D81FC16699C16009D49BE /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ProportionalFill.h"; path = "Categories/UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
+		034D81FD16699C16009D49BE /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Categories/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		0355510516681E2F0036C528 /* NSShadow+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSShadow+DALAdditions.h"; path = "Categories/NSShadow+DALAdditions.h"; sourceTree = "<group>"; };
 		0355510616681E2F0036C528 /* NSShadow+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSShadow+DALAdditions.m"; path = "Categories/NSShadow+DALAdditions.m"; sourceTree = "<group>"; };
 		037534441662D6C1006BAACF /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +200,8 @@
 				03199F471665E1B100C1B57B /* CoreGraphics+DALAdditions.m */,
 				0355510516681E2F0036C528 /* NSShadow+DALAdditions.h */,
 				0355510616681E2F0036C528 /* NSShadow+DALAdditions.m */,
+				034D81FC16699C16009D49BE /* UIImage+ProportionalFill.h */,
+				034D81FD16699C16009D49BE /* UIImage+ProportionalFill.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				03D6B2541667CA160081AF76 /* DALSectionIndexCollectionView.m in Sources */,
 				03D6B2571667D0020081AF76 /* DALContactsCollectionView.m in Sources */,
 				0355510716681E2F0036C528 /* NSShadow+DALAdditions.m in Sources */,
+				034D81FE16699C16009D49BE /* UIImage+ProportionalFill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
