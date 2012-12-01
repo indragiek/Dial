@@ -16,6 +16,7 @@
 		03199F4A1665E7B700C1B57B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03199F491665E7B600C1B57B /* CoreImage.framework */; };
 		034D81FE16699C16009D49BE /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D81FD16699C16009D49BE /* UIImage+ProportionalFill.m */; };
 		0355510716681E2F0036C528 /* NSShadow+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0355510616681E2F0036C528 /* NSShadow+DALAdditions.m */; };
+		0368C371166AADDB007BFC9C /* DALCircularMenuLayoutData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0368C370166AADDB007BFC9C /* DALCircularMenuLayoutData.m */; };
 		037534491662D6C1006BAACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037534481662D6C1006BAACF /* UIKit.framework */; };
 		0375344B1662D6C1006BAACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344A1662D6C1006BAACF /* Foundation.framework */; };
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
@@ -67,6 +68,8 @@
 		034D81FD16699C16009D49BE /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ProportionalFill.m"; path = "Categories/UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		0355510516681E2F0036C528 /* NSShadow+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSShadow+DALAdditions.h"; path = "Categories/NSShadow+DALAdditions.h"; sourceTree = "<group>"; };
 		0355510616681E2F0036C528 /* NSShadow+DALAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSShadow+DALAdditions.m"; path = "Categories/NSShadow+DALAdditions.m"; sourceTree = "<group>"; };
+		0368C36F166AADDB007BFC9C /* DALCircularMenuLayoutData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALCircularMenuLayoutData.h; path = Classes/DALCircularMenuLayoutData.h; sourceTree = "<group>"; };
+		0368C370166AADDB007BFC9C /* DALCircularMenuLayoutData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALCircularMenuLayoutData.m; path = Classes/DALCircularMenuLayoutData.m; sourceTree = "<group>"; };
 		037534441662D6C1006BAACF /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		037534481662D6C1006BAACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0375344A1662D6C1006BAACF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +150,17 @@
 				03D6B24C1667BA3A0081AF76 /* DALABRecord.m */,
 			);
 			name = "Address Book";
+			sourceTree = "<group>";
+		};
+		0368C36D166AADC6007BFC9C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				03B265501669DD430098948B /* DALCircularMenu.h */,
+				03B265511669DD430098948B /* DALCircularMenu.m */,
+				0368C36F166AADDB007BFC9C /* DALCircularMenuLayoutData.h */,
+				0368C370166AADDB007BFC9C /* DALCircularMenuLayoutData.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		037534391662D6C0006BAACF = {
@@ -267,6 +281,7 @@
 		03B94F7116645111007EDF4F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0368C36D166AADC6007BFC9C /* New Group */,
 				03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */,
 				03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */,
 				03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */,
@@ -278,8 +293,6 @@
 				03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */,
 				0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */,
 				0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */,
-				03B265501669DD430098948B /* DALCircularMenu.h */,
-				03B265511669DD430098948B /* DALCircularMenu.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -381,6 +394,7 @@
 				0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */,
 				03B265491669DA940098948B /* UIView+DALAdditions.m in Sources */,
 				03B265521669DD430098948B /* DALCircularMenu.m in Sources */,
+				0368C371166AADDB007BFC9C /* DALCircularMenuLayoutData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,6 +43,7 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
     CGRectDivide(self.frame, &listViewFrame, &collectionViewFrame, DALSectionIndexListViewWidth, CGRectMaxXEdge);
     self.frame = collectionViewFrame;
     _indexListView.frame = listViewFrame;
+    _indexListView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self superview] addSubview:_indexListView];
 }
 

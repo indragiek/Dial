@@ -16,6 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [DALContactsViewController new];
+    self.viewController.view.frame = self.window.bounds;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

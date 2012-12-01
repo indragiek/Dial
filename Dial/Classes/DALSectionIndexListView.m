@@ -55,40 +55,14 @@ static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
 {
     if (_sectionIndexTitles != sectionIndexTitles) {
         _sectionIndexTitles = sectionIndexTitles;
-        if ([_sectionIndexTitles count]) {
-            NSMutableArray *rects = [NSMutableArray arrayWithCapacity:[sectionIndexTitles count]];
-            __block CGFloat totalContentHeight = 0.f;
-            [_sectionIndexTitles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                if ([obj isKindOfClass:[NSString class]]) {
-                    CGFloat textHeight = [obj sizeWithFont:self.font].height;
-                    totalContentHeight += textHeight;
-                    CGRect textRect = CGRectMake(0.f, 0.f, CGRectGetWidth(self.bounds), textHeight);
-                    NSValue *value = [NSValue valueWithCGRect:textRect];
-                    [rects addObject:value];
-                } else if ([obj isKindOfClass:[UIImage class]]) {
-                    CGSize imageSize = [(UIImage *)obj size];
-                    totalContentHeight += imageSize.height;
-                    CGRect imageRect = CGRectMake(floor(CGRectGetMidX(self.bounds) - (imageSize.width / 2.f)), 0.f, imageSize.width, imageSize.height);
-                    NSValue *value = [NSValue valueWithCGRect:imageRect];
-                    [rects addObject:value];
-                }
-            }];
-            CGFloat margin = (CGRectGetHeight(self.bounds) - totalContentHeight - (DALSectionIndexListViewEdgeInset * 2.f)) / [rects count];
-            NSMutableArray *adjustedRects = [NSMutableArray arrayWithCapacity:[rects count]];
-            __block CGFloat currentOrigin = DALSectionIndexListViewEdgeInset;
-            [rects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                CGRect rect = [obj CGRectValue];
-                rect.origin.y = currentOrigin;
-                currentOrigin += CGRectGetHeight(rect) + margin;
-                NSValue *value = [NSValue valueWithCGRect:rect];
-                [adjustedRects addObject:value];
-            }];
-            _layoutRects = adjustedRects;
-        } else {
-            _layoutRects = nil;
-        }
-        [self setNeedsDisplay];
+        [self _recalculateGeometry];
     }
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self _recalculateGeometry];
 }
 
 - (UIFont *)font
@@ -119,5 +93,44 @@ static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
 - (void)setTextShadow:(NSShadow *)textShadow
 {
     _textAttributes[NSShadowAttributeName] = textShadow;
+}
+
+#pragma mark - Layout
+
+- (void)_recalculateGeometry
+{
+    if ([self.sectionIndexTitles count]) {
+        NSMutableArray *rects = [NSMutableArray arrayWithCapacity:[self.sectionIndexTitles count]];
+        __block CGFloat totalContentHeight = 0.f;
+        [self.sectionIndexTitles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj isKindOfClass:[NSString class]]) {
+                CGFloat textHeight = [obj sizeWithFont:self.font].height;
+                totalContentHeight += textHeight;
+                CGRect textRect = CGRectMake(0.f, 0.f, CGRectGetWidth(self.bounds), textHeight);
+                NSValue *value = [NSValue valueWithCGRect:textRect];
+                [rects addObject:value];
+            } else if ([obj isKindOfClass:[UIImage class]]) {
+                CGSize imageSize = [(UIImage *)obj size];
+                totalContentHeight += imageSize.height;
+                CGRect imageRect = CGRectMake(floor(CGRectGetMidX(self.bounds) - (imageSize.width / 2.f)), 0.f, imageSize.width, imageSize.height);
+                NSValue *value = [NSValue valueWithCGRect:imageRect];
+                [rects addObject:value];
+            }
+        }];
+        CGFloat margin = (CGRectGetHeight(self.bounds) - totalContentHeight - (DALSectionIndexListViewEdgeInset * 2.f)) / [rects count];
+        NSMutableArray *adjustedRects = [NSMutableArray arrayWithCapacity:[rects count]];
+        __block CGFloat currentOrigin = DALSectionIndexListViewEdgeInset;
+        [rects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CGRect rect = [obj CGRectValue];
+            rect.origin.y = currentOrigin;
+            currentOrigin += CGRectGetHeight(rect) + margin;
+            NSValue *value = [NSValue valueWithCGRect:rect];
+            [adjustedRects addObject:value];
+        }];
+        _layoutRects = adjustedRects;
+    } else {
+        _layoutRects = nil;
+    }
+    [self setNeedsDisplay];
 }
 @end
