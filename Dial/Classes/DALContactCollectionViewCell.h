@@ -12,4 +12,5 @@
 @property (nonatomic, weak) IBOutlet UILabel *firstNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *lastNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIView *imageContainerView;
 @end

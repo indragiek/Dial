@@ -14,7 +14,9 @@
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
 #import "DALImageCache.h"
+
 #import "UIImage+ProportionalFill.h"
+#import "UIView+DALAdditions.h"
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALContactsCellStarImageName = @"star";
@@ -27,7 +29,9 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
 @implementation DALContactsViewController {
     dispatch_queue_t _imageQueue;
     DALImageCache *_imageCache;
-    DALLongPressOverlayView *_overlayView;
+    
+    DALLongPressOverlayView *_overlayBackgroundView;
+    UIImageView *_overlayImageView;
 }
 #pragma mark - UIViewController
 
@@ -118,16 +122,24 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
 
 - (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    DALABPerson *person = [self.people objectAtIndex:indexPath.row];
-    UIView *container = [self.view superview];
-    _overlayView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
-    _overlayView.alpha = 0.f;
-    _overlayView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    _overlayView.delegate = self;
-    [container addSubview:_overlayView];
-    [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
-        _overlayView.alpha = 1.f;
-    }];
+    DALContactCollectionViewCell *cell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell) {
+        UIView *container = [self.view superview];
+        _overlayBackgroundView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
+        _overlayBackgroundView.alpha = 0.f;
+        _overlayBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _overlayBackgroundView.delegate = self;
+        UIView *imageContainer = cell.imageContainerView;
+        UIImage *contactImage = imageContainer.UIImage;
+        CGRect frame = [imageContainer convertRect:[imageContainer bounds] toView:container];
+        _overlayImageView = [[UIImageView alloc] initWithFrame:frame];
+        _overlayImageView.image = contactImage;
+        [container addSubview:_overlayBackgroundView];
+        [container addSubview:_overlayImageView];
+        [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
+            _overlayBackgroundView.alpha = 1.f;
+        }];
+    }
 }
 
 #pragma mark - DALLongPressOverlayViewDelegate
@@ -135,10 +147,12 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
 - (void)overlayViewTapped:(DALLongPressOverlayView *)overlayView
 {
     [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
-        _overlayView.alpha = 0.f;
+        _overlayBackgroundView.alpha = 0.f;
     } completion:^(BOOL finished) {
-        [_overlayView removeFromSuperview];
-        _overlayView = nil;
+        [_overlayBackgroundView removeFromSuperview];
+        _overlayBackgroundView = nil;
+        [_overlayImageView removeFromSuperview];
+        _overlayImageView = nil;
     }];
 }
 @end
