@@ -9,6 +9,7 @@
 #import "DALContactsViewController.h"
 #import "DALContactCollectionViewCell.h"
 #import "DALContactsCollectionView.h"
+#import "DALLongPressOverlayView.h"
 
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
@@ -17,6 +18,7 @@
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALContactsCellStarImageName = @"star";
+static CGFloat const DALContactsAnimationDuration = 0.25f;
 
 @interface DALContactsViewController ()
 @property (nonatomic, strong) NSArray *people;
@@ -25,6 +27,7 @@ static NSString* const DALContactsCellStarImageName = @"star";
 @implementation DALContactsViewController {
     dispatch_queue_t _imageQueue;
     DALImageCache *_imageCache;
+    DALLongPressOverlayView *_overlayView;
 }
 #pragma mark - UIViewController
 
@@ -116,6 +119,26 @@ static NSString* const DALContactsCellStarImageName = @"star";
 - (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath
 {
     DALABPerson *person = [self.people objectAtIndex:indexPath.row];
-    NSLog(@"Long press on %@ %@", person.firstName, person.lastName);
+    UIView *container = [self.view superview];
+    _overlayView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
+    _overlayView.alpha = 0.f;
+    _overlayView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _overlayView.delegate = self;
+    [container addSubview:_overlayView];
+    [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
+        _overlayView.alpha = 1.f;
+    }];
+}
+
+#pragma mark - DALLongPressOverlayViewDelegate
+
+- (void)overlayViewTapped:(DALLongPressOverlayView *)overlayView
+{
+    [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
+        _overlayView.alpha = 0.f;
+    } completion:^(BOOL finished) {
+        [_overlayView removeFromSuperview];
+        _overlayView = nil;
+    }];
 }
 @end

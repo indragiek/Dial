@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DALViewController.h"
 
-@interface DALContactsViewController : DALViewController
+@protocol DALLongPressOverlayViewDelegate;
+@interface DALContactsViewController : DALViewController <DALLongPressOverlayViewDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @end

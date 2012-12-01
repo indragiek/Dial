@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */; };
 		03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3816647C8C00227BC0 /* DALABAddressBook.m */; };
 		03084F3C166488D200227BC0 /* DALABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3B166488D200227BC0 /* DALABPerson.m */; };
 		03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03084F3D1664947F00227BC0 /* AddressBook.framework */; };
@@ -45,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALLongPressOverlayView.h; path = Classes/DALLongPressOverlayView.h; sourceTree = "<group>"; };
+		0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALLongPressOverlayView.m; path = Classes/DALLongPressOverlayView.m; sourceTree = "<group>"; };
 		03084F3716647C8C00227BC0 /* DALABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABAddressBook.h; path = Classes/DALABAddressBook.h; sourceTree = "<group>"; };
 		03084F3816647C8C00227BC0 /* DALABAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABAddressBook.m; path = Classes/DALABAddressBook.m; sourceTree = "<group>"; };
 		03084F3A166488D200227BC0 /* DALABPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABPerson.h; path = Classes/DALABPerson.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */,
 				03D6B2551667D0020081AF76 /* DALContactsCollectionView.h */,
 				03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */,
+				0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */,
+				0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				03D6B2571667D0020081AF76 /* DALContactsCollectionView.m in Sources */,
 				0355510716681E2F0036C528 /* NSShadow+DALAdditions.m in Sources */,
 				034D81FE16699C16009D49BE /* UIImage+ProportionalFill.m in Sources */,
+				0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
