@@ -8,3 +8,4 @@
 
 CGRect DALCGRectFlipped(CGRect rect, CGRect bounds);
 CGPoint DALCGPointFlipped(CGPoint point, CGRect bounds);
+void DALDrawGradientWithColors(NSArray *colors, CGFloat locations[], CGPoint startPoint, CGPoint endPoint);

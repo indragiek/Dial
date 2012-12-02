@@ -9,7 +9,7 @@
 #import "DALSectionIndexCollectionView.h"
 #import "DALSectionIndexListView.h"
 
-static CGFloat const DALSectionIndexListViewWidth = 32.f;
+CGFloat const DALSectionIndexListViewWidth = 32.f;
 
 @implementation DALSectionIndexCollectionView {
     DALSectionIndexListView *_indexListView;
@@ -20,7 +20,6 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
 {
     if ((self = [super initWithCoder:aDecoder])) {
         _indexListView = [[DALSectionIndexListView alloc] initWithFrame:CGRectZero];
-        _indexListView.backgroundColor = self.backgroundColor;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
     }
@@ -29,19 +28,11 @@ static CGFloat const DALSectionIndexListViewWidth = 32.f;
 
 #pragma mark - Accessors
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    [super setBackgroundColor:backgroundColor];
-    _indexListView.backgroundColor = backgroundColor;
-}
-
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];
     [_indexListView removeFromSuperview];
-    CGRect collectionViewFrame, listViewFrame;
-    CGRectDivide(self.frame, &listViewFrame, &collectionViewFrame, DALSectionIndexListViewWidth, CGRectMaxXEdge);
-    self.frame = collectionViewFrame;
+    CGRect listViewFrame = CGRectMake(CGRectGetMaxX(self.frame) - DALSectionIndexListViewWidth, CGRectGetMinY(self.frame), DALSectionIndexListViewWidth, CGRectGetHeight(self.frame));
     _indexListView.frame = listViewFrame;
     _indexListView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self superview] addSubview:_indexListView];

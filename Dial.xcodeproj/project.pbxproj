@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */; };
+		0306C0DA166BF55D00DE0F36 /* DALContactSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0306C0D9166BF55D00DE0F36 /* DALContactSectionHeaderView.m */; };
+		0306C0DE166BF5F100DE0F36 /* DALContactSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0306C0DD166BF5F100DE0F36 /* DALContactSectionHeaderView.xib */; };
 		03070CC6166B1F06006C603F /* button-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CBE166B1F06006C603F /* button-edit.png */; };
 		03070CC7166B1F06006C603F /* button-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CBF166B1F06006C603F /* button-edit@2x.png */; };
 		03070CC8166B1F06006C603F /* button-facetime.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC0166B1F06006C603F /* button-facetime.png */; };
@@ -30,6 +32,7 @@
 		0375344D1662D6C1006BAACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0375344C1662D6C1006BAACF /* CoreGraphics.framework */; };
 		037534531662D6C1006BAACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037534511662D6C1006BAACF /* InfoPlist.strings */; };
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
+		037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */; };
 		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
 		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
@@ -62,6 +65,9 @@
 /* Begin PBXFileReference section */
 		0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALLongPressOverlayView.h; path = Classes/DALLongPressOverlayView.h; sourceTree = "<group>"; };
 		0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALLongPressOverlayView.m; path = Classes/DALLongPressOverlayView.m; sourceTree = "<group>"; };
+		0306C0D8166BF55D00DE0F36 /* DALContactSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactSectionHeaderView.h; path = Classes/DALContactSectionHeaderView.h; sourceTree = "<group>"; };
+		0306C0D9166BF55D00DE0F36 /* DALContactSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactSectionHeaderView.m; path = Classes/DALContactSectionHeaderView.m; sourceTree = "<group>"; };
+		0306C0DD166BF5F100DE0F36 /* DALContactSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactSectionHeaderView.xib; path = Classes/DALContactSectionHeaderView.xib; sourceTree = "<group>"; };
 		03070CBE166B1F06006C603F /* button-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-edit.png"; path = "Resources/button-edit.png"; sourceTree = SOURCE_ROOT; };
 		03070CBF166B1F06006C603F /* button-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-edit@2x.png"; path = "Resources/button-edit@2x.png"; sourceTree = SOURCE_ROOT; };
 		03070CC0166B1F06006C603F /* button-facetime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-facetime.png"; path = "Resources/button-facetime.png"; sourceTree = SOURCE_ROOT; };
@@ -94,6 +100,8 @@
 		037534521662D6C1006BAACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		037534541662D6C1006BAACF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		037534561662D6C1006BAACF /* Dial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dial-Prefix.pch"; sourceTree = "<group>"; };
+		037DE929166BFF4100534821 /* DALCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALCollectionViewFlowLayout.h; path = Classes/DALCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALCollectionViewFlowLayout.m; path = Classes/DALCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
 		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
@@ -153,6 +161,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0306C0D5166BF51700DE0F36 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				037DE927166BFF2800534821 /* Layout */,
+				0306C0D7166BF53300DE0F36 /* Contacts */,
+				0306C0D6166BF52A00DE0F36 /* Section Indexing */,
+			);
+			name = "Collection View";
+			sourceTree = "<group>";
+		};
+		0306C0D6166BF52A00DE0F36 /* Section Indexing */ = {
+			isa = PBXGroup;
+			children = (
+				03D6B24F1667C8BC0081AF76 /* DALSectionIndexListView.h */,
+				03D6B2501667C8BC0081AF76 /* DALSectionIndexListView.m */,
+				03D6B2521667CA150081AF76 /* DALSectionIndexCollectionView.h */,
+				03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */,
+			);
+			name = "Section Indexing";
+			sourceTree = "<group>";
+		};
+		0306C0D7166BF53300DE0F36 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				03D6B2551667D0020081AF76 /* DALContactsCollectionView.h */,
+				03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */,
+				03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */,
+				03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */,
+				03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */,
+				0306C0D8166BF55D00DE0F36 /* DALContactSectionHeaderView.h */,
+				0306C0D9166BF55D00DE0F36 /* DALContactSectionHeaderView.m */,
+				0306C0DD166BF5F100DE0F36 /* DALContactSectionHeaderView.xib */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		0306C0DF166BF7DC00DE0F36 /* External */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		03084F3516647C6700227BC0 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +219,7 @@
 			name = "Address Book";
 			sourceTree = "<group>";
 		};
-		0368C36D166AADC6007BFC9C /* New Group */ = {
+		0368C36D166AADC6007BFC9C /* Circular Menu */ = {
 			isa = PBXGroup;
 			children = (
 				03B265501669DD430098948B /* DALCircularMenu.h */,
@@ -176,7 +227,7 @@
 				0368C36F166AADDB007BFC9C /* DALCircularMenuLayoutData.h */,
 				0368C370166AADDB007BFC9C /* DALCircularMenuLayoutData.m */,
 			);
-			name = "New Group";
+			name = "Circular Menu";
 			sourceTree = "<group>";
 		};
 		037534391662D6C0006BAACF = {
@@ -212,6 +263,7 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
+				0306C0DF166BF7DC00DE0F36 /* External */,
 				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
 				03942AB716652145007809D3 /* Utilities */,
@@ -234,6 +286,15 @@
 				037534561662D6C1006BAACF /* Dial-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		037DE927166BFF2800534821 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				037DE929166BFF4100534821 /* DALCollectionViewFlowLayout.h */,
+				037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */,
+			);
+			name = Layout;
 			sourceTree = "<group>";
 		};
 		03942AB316651CEA007809D3 /* Categories */ = {
@@ -305,16 +366,8 @@
 		03B94F7116645111007EDF4F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0368C36D166AADC6007BFC9C /* New Group */,
-				03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */,
-				03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */,
-				03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */,
-				03D6B24F1667C8BC0081AF76 /* DALSectionIndexListView.h */,
-				03D6B2501667C8BC0081AF76 /* DALSectionIndexListView.m */,
-				03D6B2521667CA150081AF76 /* DALSectionIndexCollectionView.h */,
-				03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */,
-				03D6B2551667D0020081AF76 /* DALContactsCollectionView.h */,
-				03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */,
+				0306C0D5166BF51700DE0F36 /* Collection View */,
+				0368C36D166AADC6007BFC9C /* Circular Menu */,
 				0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */,
 				0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */,
 			);
@@ -395,6 +448,7 @@
 				03070CCB166B1F06006C603F /* button-message@2x.png in Resources */,
 				03070CCC166B1F06006C603F /* button-star.png in Resources */,
 				03070CCD166B1F06006C603F /* button-star@2x.png in Resources */,
+				0306C0DE166BF5F100DE0F36 /* DALContactSectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +481,8 @@
 				03B265491669DA940098948B /* UIView+DALAdditions.m in Sources */,
 				03B265521669DD430098948B /* DALCircularMenu.m in Sources */,
 				0368C371166AADDB007BFC9C /* DALCircularMenuLayoutData.m in Sources */,
+				0306C0DA166BF55D00DE0F36 /* DALContactSectionHeaderView.m in Sources */,
+				037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

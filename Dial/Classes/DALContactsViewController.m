@@ -9,6 +9,7 @@
 #import "DALContactsViewController.h"
 #import "DALContactCollectionViewCell.h"
 #import "DALContactsCollectionView.h"
+#import "DALContactSectionHeaderView.h"
 #import "DALCircularMenu.h"
 
 #import "DALABAddressBook.h"
@@ -22,17 +23,20 @@
 #import <QuartzCore/QuartzCore.h>
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
-static NSString* const DALContactsCellStarImageName = @"star";
-static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
-static CGFloat const DALContactsAnimationDuration = 0.25f;
+static NSString* const DALHeaderViewIdentifier = @"DALSectionHeaderView";
 
 static NSString* const DALContactsCellEditButtonImageName = @"button-edit";
 static NSString* const DALContactsCellFaceTimeButtonImageName = @"button-facetime";
 static NSString* const DALContactsCellMessageButtonImageName = @"button-message";
 static NSString* const DALContactsCellStarButtonImageName = @"button-star";
+static NSString* const DALContactsCellStarImageName = @"star";
+static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
+
+static NSString* const DALContactsWildcardSectionName = @"#";
 
 @interface DALContactsViewController ()
-@property (nonatomic, strong) NSArray *people;
+@property (nonatomic, strong) NSDictionary *sections;
+@property (nonatomic, strong) NSArray *sortedSectionIdentifiers;
 @property (nonatomic, strong) DALLongPressOverlayView *overlayBackgroundView;
 @property (nonatomic, strong) UIImageView *overlayImageView;
 @property (nonatomic, strong) DALCircularMenu *contactMenu;
@@ -57,34 +61,59 @@ static NSString* const DALContactsCellStarButtonImageName = @"button-star";
 {
     [super viewDidLoad];
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([DALContactCollectionViewCell class]) bundle:nil];
+    UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([DALContactSectionHeaderView class]) bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:DALContactsCellIdentifier];
+    [self.collectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DALHeaderViewIdentifier];
     
     DALABAddressBook *addressBook = [DALABAddressBook addressBook];
-    void (^getPeople)() = ^(){
-        self.people = [addressBook allPeople];
+    void (^buildSections)() = ^(){
+        NSArray *people = [addressBook allPeople];
+        NSMutableDictionary *alpha = [NSMutableDictionary new];
+        NSCharacterSet *alphaCharacters = [NSCharacterSet letterCharacterSet];
+        [people enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *firstName = [obj firstName];
+            NSString *sectionIdentifier = nil;
+            if ([firstName length] && [alphaCharacters characterIsMember:[firstName characterAtIndex:0]]) {
+                sectionIdentifier = [[firstName substringToIndex:1] uppercaseString];
+            } else {
+                sectionIdentifier = DALContactsWildcardSectionName;
+            }
+            NSMutableArray *sectionPeople = [alpha valueForKey:sectionIdentifier] ?: [NSMutableArray array];
+            [sectionPeople addObject:obj];
+            alpha[sectionIdentifier] = sectionPeople;
+        }];
+        self.sections = alpha;
+        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+        self.sortedSectionIdentifiers = [collation sortedArrayFromArray:[alpha allKeys] collationStringSelector:@selector(self)];
         [self.collectionView reloadData];
     };
     if (addressBook.authorizationStatus != kABAuthorizationStatusAuthorized) {
         [addressBook requestAuthorizationWithCompletionHandler:^(DALABAddressBook *addressBook, BOOL granted, NSError *error) {
             if (granted)
-                getPeople();
+                buildSections();
         }];
     } else {
-        getPeople();
+        buildSections();
     }
 }
 
 #pragma mark - UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return [self.sortedSectionIdentifiers count];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.people count];
+    NSString *identifier = self.sortedSectionIdentifiers[section];
+    return [self.sections[identifier] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DALContactCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DALContactsCellIdentifier forIndexPath:indexPath];
-    DALABPerson *person = [self.people objectAtIndex:indexPath.row];
+    DALABPerson *person = [self _personAtIndexPath:indexPath];
     cell.firstNameLabel.text = person.firstName;
     cell.lastNameLabel.text = person.lastName;
     void (^setImageViewImage)(UIImage*) = ^(UIImage *image){
@@ -124,9 +153,23 @@ static NSString* const DALContactsCellStarButtonImageName = @"button-star";
     contactCell.imageView.image = nil;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        DALContactSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:DALHeaderViewIdentifier forIndexPath:indexPath];
+        NSString *sectionHeader = self.sortedSectionIdentifiers[indexPath.section];
+        header.headerLabel.text = sectionHeader;
+        return header;
+    }
+    return nil;
+}
+
 - (NSArray *)sectionIndexTitlesForCollectionView:(UICollectionView *)collectionView
 {
-    return @[[UIImage imageNamed:DALContactsCellStarImageName], @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
+    NSMutableArray *titles = [NSMutableArray array];
+    [titles addObject:[UIImage imageNamed:DALContactsCellStarImageName]];
+    [titles addObjectsFromArray:[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles]];
+    return titles;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -169,6 +212,13 @@ static NSString* const DALContactsCellStarButtonImageName = @"button-star";
 }
 
 #pragma mark - Private
+
+- (DALABPerson *)_personAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sectionIdentifier = self.sortedSectionIdentifiers[indexPath.section];
+    NSMutableArray *people = self.sections[sectionIdentifier];
+    return [people objectAtIndex:indexPath.row];
+}
 
 - (UIButton *)_menuButtonForImageName:(NSString *)name
 {

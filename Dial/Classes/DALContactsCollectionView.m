@@ -7,6 +7,7 @@
 //
 
 #import "DALContactsCollectionView.h"
+#import "DALCollectionViewFlowLayout.h"
 
 static CGFloat const DALContactsLayoutMinimumLineSpacing = 21.f;
 static CGFloat const DALContactsLayoutMinimumInteritemSpacing = 15.f;
@@ -14,6 +15,7 @@ static CGFloat const DALContactsLayoutItemWidth = 81.f;
 static CGFloat const DALContactsLayoutItemHeight = 121.f;
 static CGFloat const DALContactsLongPresssDuration = 0.25f;
 static NSString* const DALContactsBackgroundPatternImageName = @"bg";
+static CGFloat const DALContactsLayoutSectionHeaderHeight = 30.f;
 
 @implementation DALContactsCollectionView
 @dynamic delegate;
@@ -22,11 +24,13 @@ static NSString* const DALContactsBackgroundPatternImageName = @"bg";
 {
     if ((self = [super initWithCoder:aDecoder])) {
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:DALContactsBackgroundPatternImageName]];
-        UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+        DALCollectionViewFlowLayout *layout = [DALCollectionViewFlowLayout new];
         layout.minimumLineSpacing = DALContactsLayoutMinimumLineSpacing;
         layout.minimumInteritemSpacing = DALContactsLayoutMinimumInteritemSpacing;
         layout.itemSize = CGSizeMake(DALContactsLayoutItemWidth, DALContactsLayoutItemHeight);
-        layout.sectionInset = UIEdgeInsetsMake(DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing, DALContactsLayoutMinimumLineSpacing, 0.f);
+        layout.sectionInset = UIEdgeInsetsMake(DALContactsLayoutMinimumLineSpacing, DALContactsLayoutMinimumInteritemSpacing, DALContactsLayoutMinimumLineSpacing, DALSectionIndexListViewWidth);
+        layout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.bounds), DALContactsLayoutSectionHeaderHeight);
+        self.collectionViewLayout = layout;
         
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_handleLongPress:)];
         longPress.minimumPressDuration = DALContactsLongPresssDuration;

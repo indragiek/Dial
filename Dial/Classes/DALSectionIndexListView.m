@@ -25,6 +25,8 @@ static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
+        self.opaque = NO;
+        self.backgroundColor = [UIColor clearColor];
         _textAttributes = [NSMutableDictionary dictionary];
         NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
         [style setAlignment:NSTextAlignmentCenter];

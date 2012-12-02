@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DALSectionIndexListView.h"
+
+extern CGFloat const DALSectionIndexListViewWidth;
 
 @class DALSectionIndexCollectionView;
 @protocol DALSectionIndexCollectionViewDataSource <UICollectionViewDataSource>
@@ -15,6 +18,7 @@
 @end
 
 @interface DALSectionIndexCollectionView : UICollectionView
+@property (nonatomic, strong, readonly) DALSectionIndexListView *indexListView;
 @property (nonatomic, assign) id<DALSectionIndexCollectionViewDataSource> dataSource;
 @end
 
