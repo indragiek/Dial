@@ -148,7 +148,17 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
             [menuItems addObject:button];
         }
         self.contactMenu = [[DALCircularMenu alloc] initWithFrame:[container bounds]];
-        self.contactMenu.animationOrigin = _overlayImageView.center;
+        CGPoint origin = self.overlayImageView.center;
+        self.contactMenu.animationOrigin = origin;
+        CGFloat radius = self.contactMenu.destinationRadius;
+        if (origin.x - radius < 0.f) { // left
+            self.contactMenu.menuAngle = M_PI;
+        } else if (origin.x + radius > CGRectGetMaxX(container.bounds)) { // right
+            self.contactMenu.menuAngle = -M_PI;
+        } else { // center
+            self.contactMenu.menuAngle = M_PI;
+            self.contactMenu.itemRotationAngle = -M_PI/2.65f;
+        }
         self.contactMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         self.contactMenu.menuItems = menuItems;
         self.contactMenu.userInteractionEnabled = NO;
