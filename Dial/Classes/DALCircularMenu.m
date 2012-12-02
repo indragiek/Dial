@@ -13,7 +13,7 @@
 static CGFloat const DALCircularMenuDefaultStretchRatio = 1.2f;
 static CGFloat const DALCircularMenuDefaultCompressionRatio = 0.9f;
 static CGFloat const DALCircularMenuDefaultAnimationTimeOffset = 0.03f;
-static CGFloat const DALCircularMenuDefaultAnimationDuration = 0.5f;
+static CGFloat const DALCircularMenuDefaultAnimationDuration = 0.4f;
 static CGFloat const DALCircularMenuDefaultDestinationRadius = 100.f;
 static CGFloat const DALCircularMenuDefaultMenuAngle = M_PI;
 static CGFloat const DALCircularMenuDefaultItemRotationAngle = 0.f;

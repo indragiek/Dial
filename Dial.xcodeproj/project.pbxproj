@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0301A38E1669C865007D8D7B /* DALLongPressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */; };
+		03070CC6166B1F06006C603F /* button-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CBE166B1F06006C603F /* button-edit.png */; };
+		03070CC7166B1F06006C603F /* button-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CBF166B1F06006C603F /* button-edit@2x.png */; };
+		03070CC8166B1F06006C603F /* button-facetime.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC0166B1F06006C603F /* button-facetime.png */; };
+		03070CC9166B1F06006C603F /* button-facetime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC1166B1F06006C603F /* button-facetime@2x.png */; };
+		03070CCA166B1F06006C603F /* button-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC2166B1F06006C603F /* button-message.png */; };
+		03070CCB166B1F06006C603F /* button-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC3166B1F06006C603F /* button-message@2x.png */; };
+		03070CCC166B1F06006C603F /* button-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC4166B1F06006C603F /* button-star.png */; };
+		03070CCD166B1F06006C603F /* button-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03070CC5166B1F06006C603F /* button-star@2x.png */; };
 		03084F3916647C8C00227BC0 /* DALABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3816647C8C00227BC0 /* DALABAddressBook.m */; };
 		03084F3C166488D200227BC0 /* DALABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 03084F3B166488D200227BC0 /* DALABPerson.m */; };
 		03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03084F3D1664947F00227BC0 /* AddressBook.framework */; };
@@ -45,8 +53,6 @@
 		03B94F701664503F007EDF4F /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F6A1664503F007EDF4F /* bg@2x.png */; };
 		03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */; };
 		03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */; };
-		03CB488F166ACCD300D97D25 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CB488D166ACCD300D97D25 /* menu-button.png */; };
-		03CB4890166ACCD300D97D25 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CB488E166ACCD300D97D25 /* menu-button@2x.png */; };
 		03D6B24D1667BA3A0081AF76 /* DALABRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B24C1667BA3A0081AF76 /* DALABRecord.m */; };
 		03D6B2511667C8BC0081AF76 /* DALSectionIndexListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2501667C8BC0081AF76 /* DALSectionIndexListView.m */; };
 		03D6B2541667CA160081AF76 /* DALSectionIndexCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */; };
@@ -56,6 +62,14 @@
 /* Begin PBXFileReference section */
 		0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALLongPressOverlayView.h; path = Classes/DALLongPressOverlayView.h; sourceTree = "<group>"; };
 		0301A38D1669C865007D8D7B /* DALLongPressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALLongPressOverlayView.m; path = Classes/DALLongPressOverlayView.m; sourceTree = "<group>"; };
+		03070CBE166B1F06006C603F /* button-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-edit.png"; path = "Resources/button-edit.png"; sourceTree = SOURCE_ROOT; };
+		03070CBF166B1F06006C603F /* button-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-edit@2x.png"; path = "Resources/button-edit@2x.png"; sourceTree = SOURCE_ROOT; };
+		03070CC0166B1F06006C603F /* button-facetime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-facetime.png"; path = "Resources/button-facetime.png"; sourceTree = SOURCE_ROOT; };
+		03070CC1166B1F06006C603F /* button-facetime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-facetime@2x.png"; path = "Resources/button-facetime@2x.png"; sourceTree = SOURCE_ROOT; };
+		03070CC2166B1F06006C603F /* button-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-message.png"; path = "Resources/button-message.png"; sourceTree = SOURCE_ROOT; };
+		03070CC3166B1F06006C603F /* button-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-message@2x.png"; path = "Resources/button-message@2x.png"; sourceTree = SOURCE_ROOT; };
+		03070CC4166B1F06006C603F /* button-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-star.png"; path = "Resources/button-star.png"; sourceTree = SOURCE_ROOT; };
+		03070CC5166B1F06006C603F /* button-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-star@2x.png"; path = "Resources/button-star@2x.png"; sourceTree = SOURCE_ROOT; };
 		03084F3716647C8C00227BC0 /* DALABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABAddressBook.h; path = Classes/DALABAddressBook.h; sourceTree = "<group>"; };
 		03084F3816647C8C00227BC0 /* DALABAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABAddressBook.m; path = Classes/DALABAddressBook.m; sourceTree = "<group>"; };
 		03084F3A166488D200227BC0 /* DALABPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABPerson.h; path = Classes/DALABPerson.h; sourceTree = "<group>"; };
@@ -112,8 +126,6 @@
 		03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactCollectionViewCell.h; path = Classes/DALContactCollectionViewCell.h; sourceTree = "<group>"; };
 		03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactCollectionViewCell.m; path = Classes/DALContactCollectionViewCell.m; sourceTree = "<group>"; };
 		03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactCollectionViewCell.xib; path = Classes/DALContactCollectionViewCell.xib; sourceTree = "<group>"; };
-		03CB488D166ACCD300D97D25 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-button.png"; path = "Resources/menu-button.png"; sourceTree = SOURCE_ROOT; };
-		03CB488E166ACCD300D97D25 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-button@2x.png"; path = "Resources/menu-button@2x.png"; sourceTree = SOURCE_ROOT; };
 		03D6B24B1667BA3A0081AF76 /* DALABRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABRecord.h; path = Classes/DALABRecord.h; sourceTree = "<group>"; };
 		03D6B24C1667BA3A0081AF76 /* DALABRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABRecord.m; path = Classes/DALABRecord.m; sourceTree = "<group>"; };
 		03D6B24F1667C8BC0081AF76 /* DALSectionIndexListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALSectionIndexListView.h; path = Classes/DALSectionIndexListView.h; sourceTree = "<group>"; };
@@ -267,8 +279,14 @@
 		03B94F5816644E47007EDF4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				03CB488D166ACCD300D97D25 /* menu-button.png */,
-				03CB488E166ACCD300D97D25 /* menu-button@2x.png */,
+				03070CBE166B1F06006C603F /* button-edit.png */,
+				03070CBF166B1F06006C603F /* button-edit@2x.png */,
+				03070CC0166B1F06006C603F /* button-facetime.png */,
+				03070CC1166B1F06006C603F /* button-facetime@2x.png */,
+				03070CC2166B1F06006C603F /* button-message.png */,
+				03070CC3166B1F06006C603F /* button-message@2x.png */,
+				03070CC4166B1F06006C603F /* button-star.png */,
+				03070CC5166B1F06006C603F /* button-star@2x.png */,
 				03B265531669DE350098948B /* placeholder.png */,
 				03B265541669DE350098948B /* placeholder@2x.png */,
 				03B94F651664503F007EDF4F /* porthole.png */,
@@ -369,8 +387,14 @@
 				03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */,
 				03B265551669DE350098948B /* placeholder.png in Resources */,
 				03B265561669DE350098948B /* placeholder@2x.png in Resources */,
-				03CB488F166ACCD300D97D25 /* menu-button.png in Resources */,
-				03CB4890166ACCD300D97D25 /* menu-button@2x.png in Resources */,
+				03070CC6166B1F06006C603F /* button-edit.png in Resources */,
+				03070CC7166B1F06006C603F /* button-edit@2x.png in Resources */,
+				03070CC8166B1F06006C603F /* button-facetime.png in Resources */,
+				03070CC9166B1F06006C603F /* button-facetime@2x.png in Resources */,
+				03070CCA166B1F06006C603F /* button-message.png in Resources */,
+				03070CCB166B1F06006C603F /* button-message@2x.png in Resources */,
+				03070CCC166B1F06006C603F /* button-star.png in Resources */,
+				03070CCD166B1F06006C603F /* button-star@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,11 @@ static NSString* const DALContactsCellStarImageName = @"star";
 static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
 static CGFloat const DALContactsAnimationDuration = 0.25f;
 
+static NSString* const DALContactsCellEditButtonImageName = @"button-edit";
+static NSString* const DALContactsCellFaceTimeButtonImageName = @"button-facetime";
+static NSString* const DALContactsCellMessageButtonImageName = @"button-message";
+static NSString* const DALContactsCellStarButtonImageName = @"button-star";
+
 @interface DALContactsViewController ()
 @property (nonatomic, strong) NSArray *people;
 @property (nonatomic, strong) DALLongPressOverlayView *overlayBackgroundView;
@@ -131,42 +136,13 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
     DALContactCollectionViewCell *cell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (cell) {
         UIView *container = [self.view superview];
-        self.overlayBackgroundView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
+        self.overlayBackgroundView = [self _configuredOverlayView];
         self.overlayBackgroundView.alpha = 0.f;
-        self.overlayBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.overlayBackgroundView.delegate = self;
-        UIView *imageContainer = cell.imageContainerView;
-        UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
-        CGRect frame = [imageContainer convertRect:[imageContainer bounds] toView:container];
-        self.overlayImageView = [[UIImageView alloc] initWithFrame:frame];
-        self.overlayImageView.image = contactImage;
-        NSMutableArray *menuItems = [NSMutableArray arrayWithCapacity:4];
-        for (NSUInteger i = 0; i < 4; i++) {
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(0, 0, 44, 44);
-            [button setImage:[UIImage imageNamed:@"menu-button"] forState:UIControlStateNormal];
-            [menuItems addObject:button];
-        }
-        self.contactMenu = [[DALCircularMenu alloc] initWithFrame:[container bounds]];
-        CGPoint origin = self.overlayImageView.center;
-        self.contactMenu.animationOrigin = origin;
-        CGFloat radius = self.contactMenu.destinationRadius;
-        if (origin.x - radius < 0.f) { // left
-            self.contactMenu.menuAngle = M_PI;
-            self.contactMenu.itemRotationAngle = M_PI/8.f;
-        } else if (origin.x + radius > CGRectGetMaxX(container.bounds)) { // right
-            self.contactMenu.menuAngle = -M_PI;
-            self.contactMenu.itemRotationAngle = -M_PI/8.f;
-        } else { // center
-            self.contactMenu.menuAngle = M_PI;
-            self.contactMenu.itemRotationAngle = -M_PI/2.65f;
-        }
-        self.contactMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.contactMenu.menuItems = menuItems;
-        self.contactMenu.userInteractionEnabled = NO;
-        [container addSubview:_overlayBackgroundView];
-        [container addSubview:_contactMenu];
-        [container addSubview:_overlayImageView];
+        self.overlayImageView = [self _configuredOverlayImageViewWithCell:cell];
+        self.contactMenu = [self _configuredMenuWithOrigin:self.overlayImageView.center];
+        [container addSubview:self.overlayBackgroundView];
+        [container addSubview:self.contactMenu];
+        [container addSubview:self.overlayImageView];
         [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
             self.overlayBackgroundView.alpha = 1.f;
         }];
@@ -190,5 +166,62 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
     [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
         self.overlayBackgroundView.alpha = 0.f;
     }];
+}
+
+#pragma mark - Private
+
+- (UIButton *)_menuButtonForImageName:(NSString *)name
+{
+    UIImage *image = [UIImage imageNamed:name];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.f, 0.f, image.size.width, image.size.height);
+    [button setImage:image forState:UIControlStateNormal];
+    return button;
+}
+
+- (DALLongPressOverlayView *)_configuredOverlayView
+{
+    UIView *container = [self.view superview];
+    DALLongPressOverlayView *overlay = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
+    overlay.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    overlay.delegate = self;
+    return overlay;
+}
+
+- (UIImageView *)_configuredOverlayImageViewWithCell:(DALContactCollectionViewCell *)cell
+{
+    UIView *container = [self.view superview];
+    UIView *imageContainer = cell.imageContainerView;
+    UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
+    CGRect frame = [imageContainer convertRect:[imageContainer bounds] toView:container];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+    imageView.image = contactImage;
+    return imageView;
+}
+
+- (DALCircularMenu *)_configuredMenuWithOrigin:(CGPoint)origin
+{
+    UIView *container = [self.view superview];
+    UIButton *facetime = [self _menuButtonForImageName:DALContactsCellFaceTimeButtonImageName];
+    UIButton *message = [self _menuButtonForImageName:DALContactsCellMessageButtonImageName];
+    UIButton *star = [self _menuButtonForImageName:DALContactsCellStarButtonImageName];
+    UIButton *edit = [self _menuButtonForImageName:DALContactsCellEditButtonImageName];
+    DALCircularMenu *menu = [[DALCircularMenu alloc] initWithFrame:[container bounds]];
+    menu.animationOrigin = origin;
+    CGFloat radius = menu.destinationRadius;
+    if (origin.x - radius < 0.f) { // left
+        menu.menuAngle = M_PI;
+        menu.itemRotationAngle = M_PI/8.f;
+    } else if (origin.x + radius > CGRectGetMaxX(container.bounds)) { // right
+        menu.menuAngle = -M_PI;
+        menu.itemRotationAngle = -M_PI/8.f;
+    } else { // center
+        menu.menuAngle = M_PI;
+        menu.itemRotationAngle = -M_PI/2.65f;
+    }
+    menu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    menu.menuItems = @[facetime, message, star, edit];
+    menu.userInteractionEnabled = NO;
+    return menu;
 }
 @end
