@@ -45,6 +45,8 @@
 		03B94F701664503F007EDF4F /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F6A1664503F007EDF4F /* bg@2x.png */; };
 		03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */; };
 		03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */; };
+		03CB488F166ACCD300D97D25 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CB488D166ACCD300D97D25 /* menu-button.png */; };
+		03CB4890166ACCD300D97D25 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CB488E166ACCD300D97D25 /* menu-button@2x.png */; };
 		03D6B24D1667BA3A0081AF76 /* DALABRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B24C1667BA3A0081AF76 /* DALABRecord.m */; };
 		03D6B2511667C8BC0081AF76 /* DALSectionIndexListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2501667C8BC0081AF76 /* DALSectionIndexListView.m */; };
 		03D6B2541667CA160081AF76 /* DALSectionIndexCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */; };
@@ -110,6 +112,8 @@
 		03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactCollectionViewCell.h; path = Classes/DALContactCollectionViewCell.h; sourceTree = "<group>"; };
 		03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactCollectionViewCell.m; path = Classes/DALContactCollectionViewCell.m; sourceTree = "<group>"; };
 		03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactCollectionViewCell.xib; path = Classes/DALContactCollectionViewCell.xib; sourceTree = "<group>"; };
+		03CB488D166ACCD300D97D25 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-button.png"; path = "Resources/menu-button.png"; sourceTree = SOURCE_ROOT; };
+		03CB488E166ACCD300D97D25 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-button@2x.png"; path = "Resources/menu-button@2x.png"; sourceTree = SOURCE_ROOT; };
 		03D6B24B1667BA3A0081AF76 /* DALABRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABRecord.h; path = Classes/DALABRecord.h; sourceTree = "<group>"; };
 		03D6B24C1667BA3A0081AF76 /* DALABRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABRecord.m; path = Classes/DALABRecord.m; sourceTree = "<group>"; };
 		03D6B24F1667C8BC0081AF76 /* DALSectionIndexListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALSectionIndexListView.h; path = Classes/DALSectionIndexListView.h; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 		03B94F5816644E47007EDF4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03CB488D166ACCD300D97D25 /* menu-button.png */,
+				03CB488E166ACCD300D97D25 /* menu-button@2x.png */,
 				03B265531669DE350098948B /* placeholder.png */,
 				03B265541669DE350098948B /* placeholder@2x.png */,
 				03B94F651664503F007EDF4F /* porthole.png */,
@@ -363,6 +369,8 @@
 				03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */,
 				03B265551669DE350098948B /* placeholder.png in Resources */,
 				03B265561669DE350098948B /* placeholder@2x.png in Resources */,
+				03CB488F166ACCD300D97D25 /* menu-button.png in Resources */,
+				03CB4890166ACCD300D97D25 /* menu-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

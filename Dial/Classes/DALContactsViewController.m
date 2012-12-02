@@ -9,7 +9,7 @@
 #import "DALContactsViewController.h"
 #import "DALContactCollectionViewCell.h"
 #import "DALContactsCollectionView.h"
-#import "DALLongPressOverlayView.h"
+#import "DALCircularMenu.h"
 
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
@@ -17,6 +17,9 @@
 
 #import "UIImage+ProportionalFill.h"
 #import "UIView+DALAdditions.h"
+#import "UIImage+DALAdditions.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALContactsCellStarImageName = @"star";
@@ -25,14 +28,14 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
 
 @interface DALContactsViewController ()
 @property (nonatomic, strong) NSArray *people;
+@property (nonatomic, strong) DALLongPressOverlayView *overlayBackgroundView;
+@property (nonatomic, strong) UIImageView *overlayImageView;
+@property (nonatomic, strong) DALCircularMenu *contactMenu;
 @end
 
 @implementation DALContactsViewController {
     dispatch_queue_t _imageQueue;
     DALImageCache *_imageCache;
-    
-    DALLongPressOverlayView *_overlayBackgroundView;
-    UIImageView *_overlayImageView;
 }
 #pragma mark - UIViewController
 
@@ -128,20 +131,34 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
     DALContactCollectionViewCell *cell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (cell) {
         UIView *container = [self.view superview];
-        _overlayBackgroundView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
-        _overlayBackgroundView.alpha = 0.f;
-        _overlayBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        _overlayBackgroundView.delegate = self;
+        self.overlayBackgroundView = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
+        self.overlayBackgroundView.alpha = 0.f;
+        self.overlayBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.overlayBackgroundView.delegate = self;
         UIView *imageContainer = cell.imageContainerView;
-        UIImage *contactImage = imageContainer.UIImage;
+        UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
         CGRect frame = [imageContainer convertRect:[imageContainer bounds] toView:container];
-        _overlayImageView = [[UIImageView alloc] initWithFrame:frame];
-        _overlayImageView.image = contactImage;
+        self.overlayImageView = [[UIImageView alloc] initWithFrame:frame];
+        self.overlayImageView.image = contactImage;
+        NSMutableArray *menuItems = [NSMutableArray arrayWithCapacity:4];
+        for (NSUInteger i = 0; i < 4; i++) {
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake(0, 0, 44, 44);
+            [button setImage:[UIImage imageNamed:@"menu-button"] forState:UIControlStateNormal];
+            [menuItems addObject:button];
+        }
+        self.contactMenu = [[DALCircularMenu alloc] initWithFrame:[container bounds]];
+        self.contactMenu.animationOrigin = _overlayImageView.center;
+        self.contactMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.contactMenu.menuItems = menuItems;
+        self.contactMenu.userInteractionEnabled = NO;
         [container addSubview:_overlayBackgroundView];
+        [container addSubview:_contactMenu];
         [container addSubview:_overlayImageView];
-        [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
-            _overlayBackgroundView.alpha = 1.f;
+        [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
+            self.overlayBackgroundView.alpha = 1.f;
         }];
+        [self.contactMenu expandWithCompletion:nil];
     }
 }
 
@@ -149,13 +166,17 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
 
 - (void)overlayViewTapped:(DALLongPressOverlayView *)overlayView
 {
-    [UIView animateWithDuration:DALContactsAnimationDuration animations:^{
-        _overlayBackgroundView.alpha = 0.f;
-    } completion:^(BOOL finished) {
-        [_overlayBackgroundView removeFromSuperview];
-        _overlayBackgroundView = nil;
-        [_overlayImageView removeFromSuperview];
-        _overlayImageView = nil;
+    if (self.contactMenu.animating) { return; }
+    [self.contactMenu closeWithCompletion:^(DALCircularMenu *menu) {
+        [self.contactMenu removeFromSuperview];
+        [self.overlayBackgroundView removeFromSuperview];
+        self.overlayBackgroundView = nil;
+        [self.overlayImageView removeFromSuperview];
+        self.overlayImageView = nil;
+        self.contactMenu = nil;
+    }];
+    [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
+        self.overlayBackgroundView.alpha = 0.f;
     }];
 }
 @end

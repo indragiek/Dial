@@ -77,4 +77,17 @@
         CGContextRestoreGState(context);
     }
 }
+
+- (UIImage *)imageCroppedToEllipse
+{
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.f);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect ellipseRect = CGRectMake(0.f, 0.f, self.size.width, self.size.height);
+    CGContextAddEllipseInRect(ctx, ellipseRect);
+    CGContextClip(ctx);
+    [self drawInRect:ellipseRect];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 @end

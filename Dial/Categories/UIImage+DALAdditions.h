@@ -14,4 +14,5 @@
           fromRect:(CGRect)fromRect
          blendMode:(CGBlendMode)blendMode
              alpha:(CGFloat)alpha;
+- (UIImage *)imageCroppedToEllipse;
 @end
