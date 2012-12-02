@@ -153,8 +153,10 @@ static CGFloat const DALContactsAnimationDuration = 0.25f;
         CGFloat radius = self.contactMenu.destinationRadius;
         if (origin.x - radius < 0.f) { // left
             self.contactMenu.menuAngle = M_PI;
+            self.contactMenu.itemRotationAngle = M_PI/8.f;
         } else if (origin.x + radius > CGRectGetMaxX(container.bounds)) { // right
             self.contactMenu.menuAngle = -M_PI;
+            self.contactMenu.itemRotationAngle = -M_PI/8.f;
         } else { // center
             self.contactMenu.menuAngle = M_PI;
             self.contactMenu.itemRotationAngle = -M_PI/2.65f;
