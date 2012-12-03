@@ -10,7 +10,7 @@
 #import "DALContactCollectionViewCell.h"
 #import "DALContactsCollectionView.h"
 #import "DALContactSectionHeaderView.h"
-#import "DALCircularMenu.h"
+#import "DALOverlayViewController.h"
 
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
@@ -26,20 +26,12 @@
 static NSString* const DALContactsCellIdentifier = @"DALContactsCell";
 static NSString* const DALHeaderViewIdentifier = @"DALSectionHeaderView";
 
-static NSString* const DALContactsCellEditButtonImageName = @"button-edit";
-static NSString* const DALContactsCellFaceTimeButtonImageName = @"button-facetime";
-static NSString* const DALContactsCellMessageButtonImageName = @"button-message";
-static NSString* const DALContactsCellStarButtonImageName = @"button-star";
 static NSString* const DALContactsCellStarImageName = @"star";
 static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
 
-static NSString* const DALContactsWildcardSectionName = @"#";
-
 @interface DALContactsViewController ()
 @property (nonatomic, strong) NSArray *sections;
-@property (nonatomic, strong) DALLongPressOverlayView *overlayBackgroundView;
-@property (nonatomic, strong) UIImageView *overlayImageView;
-@property (nonatomic, strong) DALCircularMenu *contactMenu;
+@property (nonatomic, strong) DALOverlayViewController *overlayViewController;
 @end
 
 @implementation DALContactsViewController {
@@ -158,20 +150,21 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     DALContactCollectionViewCell *cell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (cell) {
         UIView *container = [self.view superview];
-        self.overlayBackgroundView = [self _configuredOverlayView];
-        self.overlayBackgroundView.alpha = 0.f;
-        self.overlayImageView = [self _configuredOverlayImageViewWithCell:cell];
-        self.contactMenu = [self _configuredMenuWithOrigin:self.overlayImageView.center];
-        [container addSubview:self.overlayBackgroundView];
-        [container addSubview:self.contactMenu];
-        [container addSubview:self.overlayImageView];
-        [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
-            self.overlayBackgroundView.alpha = 1.f;
+        UIView *imageContainer = cell.imageContainerView;
+        UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
+        CGPoint origin = [imageContainer.superview convertPoint:imageContainer.center toView:nil];
+        DALOverlayViewController *overlayViewController = [[DALOverlayViewController alloc] initWithCellImage:contactImage cellOrigin:origin];
+        overlayViewController.view.frame = container.bounds;
+        overlayViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [container addSubview:overlayViewController.view];
+        [overlayViewController setCloseCompletionBlock:^(DALOverlayViewController *vc) {
+            [self.overlayViewController.view removeFromSuperview];
+            self.overlayViewController = nil;
         }];
-        [self.contactMenu expandWithCompletion:nil];
+        self.overlayViewController = overlayViewController;
+        [self.overlayViewController expandMenu];
     }
 }
-
 
 - (void)collectionView:(UICollectionView *)collectionView tappedSectionIndexTitle:(id)title
 {
@@ -183,24 +176,6 @@ static NSString* const DALContactsWildcardSectionName = @"#";
             [self.collectionView scrollRectToVisible:itemFrame animated:NO];
             *stop = YES;
         }
-    }];
-}
-
-#pragma mark - DALLongPressOverlayViewDelegate
-
-- (void)overlayViewTapped:(DALLongPressOverlayView *)overlayView
-{
-    if (self.contactMenu.animating) { return; }
-    [self.contactMenu closeWithCompletion:^(DALCircularMenu *menu) {
-        [self.contactMenu removeFromSuperview];
-        [self.overlayBackgroundView removeFromSuperview];
-        self.overlayBackgroundView = nil;
-        [self.overlayImageView removeFromSuperview];
-        self.overlayImageView = nil;
-        self.contactMenu = nil;
-    }];
-    [UIView animateWithDuration:self.contactMenu.animationDuration animations:^{
-        self.overlayBackgroundView.alpha = 0.f;
     }];
 }
 
@@ -236,62 +211,5 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     }];
     self.sections = sections;
     [self.collectionView reloadData];
-}
-
-#pragma mark - Private UI Methods
-
-- (UIButton *)_menuButtonForImageName:(NSString *)name
-{
-    UIImage *image = [UIImage imageNamed:name];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0.f, 0.f, image.size.width, image.size.height);
-    [button setImage:image forState:UIControlStateNormal];
-    return button;
-}
-
-- (DALLongPressOverlayView *)_configuredOverlayView
-{
-    UIView *container = [self.view superview];
-    DALLongPressOverlayView *overlay = [[DALLongPressOverlayView alloc] initWithFrame:[container bounds]];
-    overlay.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    overlay.delegate = self;
-    return overlay;
-}
-
-- (UIImageView *)_configuredOverlayImageViewWithCell:(DALContactCollectionViewCell *)cell
-{
-    UIView *container = [self.view superview];
-    UIView *imageContainer = cell.imageContainerView;
-    UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
-    CGRect frame = [imageContainer convertRect:[imageContainer bounds] toView:container];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.image = contactImage;
-    return imageView;
-}
-
-- (DALCircularMenu *)_configuredMenuWithOrigin:(CGPoint)origin
-{
-    UIView *container = [self.view superview];
-    UIButton *facetime = [self _menuButtonForImageName:DALContactsCellFaceTimeButtonImageName];
-    UIButton *message = [self _menuButtonForImageName:DALContactsCellMessageButtonImageName];
-    UIButton *star = [self _menuButtonForImageName:DALContactsCellStarButtonImageName];
-    UIButton *edit = [self _menuButtonForImageName:DALContactsCellEditButtonImageName];
-    DALCircularMenu *menu = [[DALCircularMenu alloc] initWithFrame:[container bounds]];
-    menu.animationOrigin = origin;
-    CGFloat radius = menu.destinationRadius;
-    if (origin.x - radius < 0.f) { // left
-        menu.menuAngle = M_PI;
-        menu.itemRotationAngle = M_PI/8.f;
-    } else if (origin.x + radius > CGRectGetMaxX(container.bounds)) { // right
-        menu.menuAngle = -M_PI;
-        menu.itemRotationAngle = -M_PI/8.f;
-    } else { // center
-        menu.menuAngle = M_PI;
-        menu.itemRotationAngle = -M_PI/2.65f;
-    }
-    menu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    menu.menuItems = @[facetime, message, star, edit];
-    menu.userInteractionEnabled = NO;
-    return menu;
 }
 @end

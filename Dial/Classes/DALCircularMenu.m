@@ -64,7 +64,6 @@ static CGPoint DALRotatePointAroundCenter(CGPoint point, CGPoint center, CGFloat
             [obj removeFromSuperview];
         }];
         _menuItems = menuItems;
-        [self _recalculateGeometry];
     }
 }
 
@@ -73,6 +72,7 @@ static CGPoint DALRotatePointAroundCenter(CGPoint point, CGPoint center, CGFloat
 - (void)expandWithCompletion:(DALCircularMenuCompletionBlock)completion
 {
     if (!_animationTimer) {
+        [self _recalculateGeometry];
         _currentAnimationIndex = 0;
         _completionBlock = [completion copy];
         _animationTimer = [NSTimer timerWithTimeInterval:self.animationTimeOffset target:self selector:@selector(_expandCurrentAnimationItem) userInfo:nil repeats:YES];

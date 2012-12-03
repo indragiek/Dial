@@ -34,6 +34,8 @@
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
 		037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */; };
 		037DE92E166C467E00534821 /* DALContactSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE92D166C467E00534821 /* DALContactSectionData.m */; };
+		037DE935166C57E100534821 /* DALOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE933166C57E100534821 /* DALOverlayViewController.m */; };
+		037DE936166C57E100534821 /* DALOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037DE934166C57E100534821 /* DALOverlayViewController.xib */; };
 		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
 		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
@@ -105,6 +107,9 @@
 		037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALCollectionViewFlowLayout.m; path = Classes/DALCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		037DE92C166C467E00534821 /* DALContactSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactSectionData.h; path = Classes/DALContactSectionData.h; sourceTree = "<group>"; };
 		037DE92D166C467E00534821 /* DALContactSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactSectionData.m; path = Classes/DALContactSectionData.m; sourceTree = "<group>"; };
+		037DE932166C57E100534821 /* DALOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALOverlayViewController.h; path = Classes/DALOverlayViewController.h; sourceTree = "<group>"; };
+		037DE933166C57E100534821 /* DALOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALOverlayViewController.m; path = Classes/DALOverlayViewController.m; sourceTree = "<group>"; };
+		037DE934166C57E100534821 /* DALOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALOverlayViewController.xib; path = Classes/DALOverlayViewController.xib; sourceTree = "<group>"; };
 		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
 		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
@@ -292,6 +297,37 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		037DE92F166C574B00534821 /* Contacts View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03B94F5316644E12007EDF4F /* DALContactsViewController.h */,
+				03B94F5416644E12007EDF4F /* DALContactsViewController.m */,
+				03B94F5516644E12007EDF4F /* DALContactsViewController.xib */,
+				037DE92C166C467E00534821 /* DALContactSectionData.h */,
+				037DE92D166C467E00534821 /* DALContactSectionData.m */,
+			);
+			name = "Contacts View Controller";
+			sourceTree = "<group>";
+		};
+		037DE930166C575600534821 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				03B94F6216644EA8007EDF4F /* DALViewController.h */,
+				03B94F6316644EA8007EDF4F /* DALViewController.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		037DE931166C575C00534821 /* Overlay View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				037DE932166C57E100534821 /* DALOverlayViewController.h */,
+				037DE933166C57E100534821 /* DALOverlayViewController.m */,
+				037DE934166C57E100534821 /* DALOverlayViewController.xib */,
+			);
+			name = "Overlay View Controller";
+			sourceTree = "<group>";
+		};
 		03942AB316651CEA007809D3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,13 +359,9 @@
 		03B94F5216644DF1007EDF4F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				03B94F6216644EA8007EDF4F /* DALViewController.h */,
-				03B94F6316644EA8007EDF4F /* DALViewController.m */,
-				03B94F5316644E12007EDF4F /* DALContactsViewController.h */,
-				03B94F5416644E12007EDF4F /* DALContactsViewController.m */,
-				03B94F5516644E12007EDF4F /* DALContactsViewController.xib */,
-				037DE92C166C467E00534821 /* DALContactSectionData.h */,
-				037DE92D166C467E00534821 /* DALContactSectionData.m */,
+				037DE930166C575600534821 /* Shared */,
+				037DE92F166C574B00534821 /* Contacts View Controller */,
+				037DE931166C575C00534821 /* Overlay View Controller */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -446,6 +478,7 @@
 				03070CCC166B1F06006C603F /* button-star.png in Resources */,
 				03070CCD166B1F06006C603F /* button-star@2x.png in Resources */,
 				0306C0DE166BF5F100DE0F36 /* DALContactSectionHeaderView.xib in Resources */,
+				037DE936166C57E100534821 /* DALOverlayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +514,7 @@
 				0306C0DA166BF55D00DE0F36 /* DALContactSectionHeaderView.m in Sources */,
 				037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */,
 				037DE92E166C467E00534821 /* DALContactSectionData.m in Sources */,
+				037DE935166C57E100534821 /* DALOverlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

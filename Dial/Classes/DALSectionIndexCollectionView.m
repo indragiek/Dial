@@ -43,13 +43,7 @@ CGFloat const DALSectionIndexListViewWidth = 32.f;
 {
     [super reloadData];
     if ([self.dataSource respondsToSelector:@selector(sectionIndexTitlesForCollectionView:)]) {
-        NSArray *titles = [self.dataSource sectionIndexTitlesForCollectionView:self];
-        NSUInteger numberOfTitles = [titles count];
-        NSUInteger numberOfSections = [self numberOfSections];
-        if (numberOfTitles && numberOfTitles != numberOfSections) {
-            NSLog(@"**WARNING**: Number of section index titles returned does not match the number of sections (%u vs %u)", numberOfTitles, numberOfSections);
-        }
-        _indexListView.sectionIndexTitles = titles;
+        _indexListView.sectionIndexTitles = [self.dataSource sectionIndexTitlesForCollectionView:self];
     }
 }
 @end
