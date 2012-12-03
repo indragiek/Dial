@@ -15,6 +15,7 @@
 #import "DALABAddressBook.h"
 #import "DALABPerson.h"
 #import "DALImageCache.h"
+#import "DALContactSectionData.h"
 
 #import "UIImage+ProportionalFill.h"
 #import "UIView+DALAdditions.h"
@@ -35,8 +36,7 @@ static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
 static NSString* const DALContactsWildcardSectionName = @"#";
 
 @interface DALContactsViewController ()
-@property (nonatomic, strong) NSDictionary *sections;
-@property (nonatomic, strong) NSArray *sortedSectionIdentifiers;
+@property (nonatomic, strong) NSArray *sections;
 @property (nonatomic, strong) DALLongPressOverlayView *overlayBackgroundView;
 @property (nonatomic, strong) UIImageView *overlayImageView;
 @property (nonatomic, strong) DALCircularMenu *contactMenu;
@@ -68,23 +68,26 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     DALABAddressBook *addressBook = [DALABAddressBook addressBook];
     void (^buildSections)() = ^(){
         NSArray *people = [addressBook allPeople];
-        NSMutableDictionary *alpha = [NSMutableDictionary new];
-        NSCharacterSet *alphaCharacters = [NSCharacterSet letterCharacterSet];
-        [people enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSString *firstName = [obj firstName];
-            NSString *sectionIdentifier = nil;
-            if ([firstName length] && [alphaCharacters characterIsMember:[firstName characterAtIndex:0]]) {
-                sectionIdentifier = [[firstName substringToIndex:1] uppercaseString];
-            } else {
-                sectionIdentifier = DALContactsWildcardSectionName;
-            }
-            NSMutableArray *sectionPeople = [alpha valueForKey:sectionIdentifier] ?: [NSMutableArray array];
-            [sectionPeople addObject:obj];
-            alpha[sectionIdentifier] = sectionPeople;
-        }];
-        self.sections = alpha;
+        NSMutableDictionary *sectionDict = [NSMutableDictionary dictionary];
         UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
-        self.sortedSectionIdentifiers = [collation sortedArrayFromArray:[alpha allKeys] collationStringSelector:@selector(self)];
+        [people enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSInteger section = [collation sectionForObject:obj collationStringSelector:@selector(firstName)];
+            NSMutableArray *contacts = sectionDict[@(section)] ?: [NSMutableArray new];
+            [contacts addObject:obj];
+            sectionDict[@(section)] = contacts;
+        }];
+        NSMutableArray *sections = [NSMutableArray arrayWithCapacity:[sectionDict count]];
+        NSArray *sortedKeys = [[sectionDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+        [sortedKeys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSMutableArray *contacts = sectionDict[obj];
+            DALContactSectionData *data = [DALContactSectionData new];
+            data.contacts = contacts;
+            NSInteger section = [obj integerValue];
+            data.title = [collation.sectionTitles objectAtIndex:section];
+            data.indexTitle = [collation.sectionIndexTitles objectAtIndex:section];
+            [sections addObject:data];
+        }];
+        self.sections = sections;
         [self.collectionView reloadData];
     };
     if (addressBook.authorizationStatus != kABAuthorizationStatusAuthorized) {
@@ -101,13 +104,12 @@ static NSString* const DALContactsWildcardSectionName = @"#";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.sortedSectionIdentifiers count];
+    return [self.sections count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSString *identifier = self.sortedSectionIdentifiers[section];
-    return [self.sections[identifier] count];
+    return [[self.sections[section] contacts] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -157,8 +159,7 @@ static NSString* const DALContactsWildcardSectionName = @"#";
 {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         DALContactSectionHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:DALHeaderViewIdentifier forIndexPath:indexPath];
-        NSString *sectionHeader = self.sortedSectionIdentifiers[indexPath.section];
-        header.headerLabel.text = sectionHeader;
+        header.headerLabel.text = [self.sections[indexPath.section] title];
         return header;
     }
     return nil;
@@ -215,9 +216,7 @@ static NSString* const DALContactsWildcardSectionName = @"#";
 
 - (DALABPerson *)_personAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionIdentifier = self.sortedSectionIdentifiers[indexPath.section];
-    NSMutableArray *people = self.sections[sectionIdentifier];
-    return [people objectAtIndex:indexPath.row];
+    return [[self.sections[indexPath.section] contacts] objectAtIndex:indexPath.row];
 }
 
 - (UIButton *)_menuButtonForImageName:(NSString *)name

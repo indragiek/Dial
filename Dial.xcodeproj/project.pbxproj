@@ -33,6 +33,7 @@
 		037534531662D6C1006BAACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 037534511662D6C1006BAACF /* InfoPlist.strings */; };
 		037534551662D6C1006BAACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 037534541662D6C1006BAACF /* main.m */; };
 		037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */; };
+		037DE92E166C467E00534821 /* DALContactSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 037DE92D166C467E00534821 /* DALContactSectionData.m */; };
 		03942AB2166511B1007809D3 /* DALABMultiValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB1166511B1007809D3 /* DALABMultiValueObject.m */; };
 		03942AB616651CFC007809D3 /* NSMutableArray+DALAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB516651CFC007809D3 /* NSMutableArray+DALAdditions.m */; };
 		03942ABA166521AE007809D3 /* DALImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03942AB9166521AE007809D3 /* DALImageCache.m */; };
@@ -102,6 +103,8 @@
 		037534561662D6C1006BAACF /* Dial-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dial-Prefix.pch"; sourceTree = "<group>"; };
 		037DE929166BFF4100534821 /* DALCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALCollectionViewFlowLayout.h; path = Classes/DALCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		037DE92A166BFF4100534821 /* DALCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALCollectionViewFlowLayout.m; path = Classes/DALCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		037DE92C166C467E00534821 /* DALContactSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactSectionData.h; path = Classes/DALContactSectionData.h; sourceTree = "<group>"; };
+		037DE92D166C467E00534821 /* DALContactSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactSectionData.m; path = Classes/DALContactSectionData.m; sourceTree = "<group>"; };
 		03942AB0166511B1007809D3 /* DALABMultiValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALABMultiValueObject.h; path = Classes/DALABMultiValueObject.h; sourceTree = "<group>"; };
 		03942AB1166511B1007809D3 /* DALABMultiValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALABMultiValueObject.m; path = Classes/DALABMultiValueObject.m; sourceTree = "<group>"; };
 		03942AB416651CFC007809D3 /* NSMutableArray+DALAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DALAdditions.h"; path = "Categories/NSMutableArray+DALAdditions.h"; sourceTree = "<group>"; };
@@ -197,13 +200,6 @@
 			name = Contacts;
 			sourceTree = "<group>";
 		};
-		0306C0DF166BF7DC00DE0F36 /* External */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
 		03084F3516647C6700227BC0 /* Address Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +259,6 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
-				0306C0DF166BF7DC00DE0F36 /* External */,
 				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
 				03942AB716652145007809D3 /* Utilities */,
@@ -333,6 +328,8 @@
 				03B94F5316644E12007EDF4F /* DALContactsViewController.h */,
 				03B94F5416644E12007EDF4F /* DALContactsViewController.m */,
 				03B94F5516644E12007EDF4F /* DALContactsViewController.xib */,
+				037DE92C166C467E00534821 /* DALContactSectionData.h */,
+				037DE92D166C467E00534821 /* DALContactSectionData.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -483,6 +480,7 @@
 				0368C371166AADDB007BFC9C /* DALCircularMenuLayoutData.m in Sources */,
 				0306C0DA166BF55D00DE0F36 /* DALContactSectionHeaderView.m in Sources */,
 				037DE92B166BFF4100534821 /* DALCollectionViewFlowLayout.m in Sources */,
+				037DE92E166C467E00534821 /* DALContactSectionData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
