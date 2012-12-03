@@ -7,6 +7,7 @@
 //
 
 #import "DALAppDelegate.h"
+#import <PonyDebugger/PonyDebugger.h>
 
 #import "DALContactsViewController.h"
 
@@ -19,6 +20,11 @@
     self.viewController.view.frame = self.window.bounds;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    PDDebugger *debugger = [PDDebugger defaultInstance];
+    [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
+    [debugger enableViewHierarchyDebugging];
+    [debugger setDisplayedViewAttributeKeyPaths:@[@"frame", @"hidden", @"alpha", @"opaque"]];
     return YES;
 }
 
@@ -46,7 +52,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[PDDebugger defaultInstance] disconnect];
 }
 
 @end

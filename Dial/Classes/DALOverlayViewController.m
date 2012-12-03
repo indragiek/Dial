@@ -89,22 +89,52 @@ static NSString* const DALOverlayMenuStarButtonImageName = @"button-star";
     
     DALCircularMenu *circularMenu = [[DALCircularMenu alloc] initWithFrame:self.view.bounds];
     circularMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    circularMenu.menuItems = @[facetime, message, star, edit];
     circularMenu.userInteractionEnabled = NO;
     circularMenu.animationOrigin = origin;
-    self.circularMenu = circularMenu;
     
-    CGFloat radius = self.circularMenu.destinationRadius;
-    if (_cellOrigin.x - radius < 0.f) { // left
-        self.circularMenu.menuAngle = M_PI;
-        self.circularMenu.itemRotationAngle = M_PI/8.f;
-    } else if (_cellOrigin.x + radius > CGRectGetMaxX(self.view.bounds)) { // right
-        self.circularMenu.menuAngle = -M_PI;
-        self.circularMenu.itemRotationAngle = -M_PI/8.f;
+    CGFloat r = circularMenu.destinationRadius + CGRectGetWidth(facetime.frame) / 2.f;
+    BOOL lowerHalf = origin.y >= CGRectGetMidY(self.view.bounds);
+    BOOL reverseItemOrder = NO;
+    CGFloat h = lowerHalf ? (CGRectGetMaxY(self.view.bounds) - origin.y) : origin.y;
+    if (origin.x - r < 0.f) { // left
+        if (h >= r) {
+            circularMenu.menuAngle = M_PI;
+            circularMenu.itemRotationAngle = M_PI/8.f;
+        } else {
+            if (lowerHalf) {
+                circularMenu.menuAngle = M_PI/2.f + asin(h/r);
+                circularMenu.itemRotationAngle = 0.f;
+            } else {
+                circularMenu.menuAngle = M_PI/2.f + atan(h/r);
+                circularMenu.itemRotationAngle = M_PI/4.f + acos(h/r);
+            }
+        }
+    } else if (origin.x + r > CGRectGetMaxX(self.view.bounds)) { // right
+        if (h >= r) {
+            circularMenu.menuAngle = -M_PI;
+            circularMenu.itemRotationAngle = -M_PI/8.f;
+        } else {
+            if (lowerHalf) {
+                
+            } else {
+                circularMenu.menuAngle = M_PI/2.f + atan(h/r);
+                circularMenu.itemRotationAngle = -(M_PI - 2*acos(h/r));
+            }
+        }
     } else { // center
-        self.circularMenu.menuAngle = M_PI;
-        self.circularMenu.itemRotationAngle = -M_PI/2.65f;
+        circularMenu.menuAngle = M_PI;
+        circularMenu.itemRotationAngle = -M_PI / 2.65f;
+        if (!lowerHalf && h < r) {
+            circularMenu.itemRotationAngle -= M_PI;
+            reverseItemOrder = YES;
+        }
     }
+    if (reverseItemOrder) {
+        circularMenu.menuItems = @[edit, star, message, facetime];
+    } else {
+        circularMenu.menuItems = @[facetime, message, star, edit];
+    }
+    self.circularMenu = circularMenu;
 }
 
 #pragma mark - DALLongPressOverlayViewDelegate
