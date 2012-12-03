@@ -14,12 +14,13 @@ CGFloat const DALSectionIndexListViewWidth = 32.f;
 @implementation DALSectionIndexCollectionView {
     DALSectionIndexListView *_indexListView;
 }
-@dynamic dataSource;
+@dynamic dataSource, delegate;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder])) {
         _indexListView = [[DALSectionIndexListView alloc] initWithFrame:CGRectZero];
+        _indexListView.collectionView = self;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
     }

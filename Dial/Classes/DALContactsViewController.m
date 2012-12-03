@@ -66,38 +66,16 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     [self.collectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:DALHeaderViewIdentifier];
     
     DALABAddressBook *addressBook = [DALABAddressBook addressBook];
-    void (^buildSections)() = ^(){
-        NSArray *people = [addressBook allPeople];
-        NSMutableDictionary *sectionDict = [NSMutableDictionary dictionary];
-        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
-        [people enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSInteger section = [collation sectionForObject:obj collationStringSelector:@selector(firstName)];
-            NSMutableArray *contacts = sectionDict[@(section)] ?: [NSMutableArray new];
-            [contacts addObject:obj];
-            sectionDict[@(section)] = contacts;
-        }];
-        NSMutableArray *sections = [NSMutableArray arrayWithCapacity:[sectionDict count]];
-        NSArray *sortedKeys = [[sectionDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
-        [sortedKeys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSMutableArray *contacts = sectionDict[obj];
-            DALContactSectionData *data = [DALContactSectionData new];
-            data.contacts = contacts;
-            NSInteger section = [obj integerValue];
-            data.title = [collation.sectionTitles objectAtIndex:section];
-            data.indexTitle = [collation.sectionIndexTitles objectAtIndex:section];
-            [sections addObject:data];
-        }];
-        self.sections = sections;
-        [self.collectionView reloadData];
-    };
     if (addressBook.authorizationStatus != kABAuthorizationStatusAuthorized) {
         [addressBook requestAuthorizationWithCompletionHandler:^(DALABAddressBook *addressBook, BOOL granted, NSError *error) {
-            if (granted)
-                buildSections();
+            if (granted) [self _buildSections];
         }];
     } else {
-        buildSections();
+        [self _buildSections];
     }
+    [addressBook registerForChangeNotificationsWithHandler:^(NSDictionary *info) {
+        [self _buildSections];
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -194,6 +172,20 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     }
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView tappedSectionIndexTitle:(id)title
+{
+    [self.sections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([[obj indexTitle] isEqual:title]) {
+            UICollectionViewLayoutAttributes *attributes = [self.collectionView layoutAttributesForSupplementaryElementOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForRow:NSNotFound inSection:idx]];
+            CGRect itemFrame = attributes.frame;
+            itemFrame.size.height = CGRectGetHeight(self.collectionView.frame);
+            [self.collectionView scrollRectToVisible:itemFrame animated:NO];
+            *stop = YES;
+        }
+    }];
+}
+
 #pragma mark - DALLongPressOverlayViewDelegate
 
 - (void)overlayViewTapped:(DALLongPressOverlayView *)overlayView
@@ -212,12 +204,41 @@ static NSString* const DALContactsWildcardSectionName = @"#";
     }];
 }
 
-#pragma mark - Private
+#pragma mark - Private Data Model Methods
 
 - (DALABPerson *)_personAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[self.sections[indexPath.section] contacts] objectAtIndex:indexPath.row];
 }
+
+- (void)_buildSections
+{
+    DALABAddressBook *addressBook = [DALABAddressBook addressBook];
+    NSArray *people = [addressBook allPeople];
+    NSMutableDictionary *sectionDict = [NSMutableDictionary dictionary];
+    UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+    [people enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSInteger section = [collation sectionForObject:obj collationStringSelector:@selector(firstName)];
+        NSMutableArray *contacts = sectionDict[@(section)] ?: [NSMutableArray new];
+        [contacts addObject:obj];
+        sectionDict[@(section)] = contacts;
+    }];
+    NSMutableArray *sections = [NSMutableArray arrayWithCapacity:[sectionDict count]];
+    NSArray *sortedKeys = [[sectionDict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    [sortedKeys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *contacts = sectionDict[obj];
+        DALContactSectionData *data = [DALContactSectionData new];
+        data.contacts = contacts;
+        NSInteger section = [obj integerValue];
+        data.title = [collation.sectionTitles objectAtIndex:section];
+        data.indexTitle = [collation.sectionIndexTitles objectAtIndex:section];
+        [sections addObject:data];
+    }];
+    self.sections = sections;
+    [self.collectionView reloadData];
+}
+
+#pragma mark - Private UI Methods
 
 - (UIButton *)_menuButtonForImageName:(NSString *)name
 {

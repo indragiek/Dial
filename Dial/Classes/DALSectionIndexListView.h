@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class DALSectionIndexCollectionView;
 @interface DALSectionIndexListView : UIView
+@property (nonatomic, weak) DALSectionIndexCollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sectionIndexTitles;
 
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *highlightedTextColor;
 @property (nonatomic, strong) NSShadow *textShadow;
+
+@property (nonatomic, assign, getter=isHighlighted, readonly) BOOL highlighted;
 @end

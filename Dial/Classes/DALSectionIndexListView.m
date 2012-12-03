@@ -7,33 +7,46 @@
 //
 
 #import "DALSectionIndexListView.h"
+#import "DALSectionIndexCollectionView.h"
 #import "NSShadow+DALAdditions.h"
 
 static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
 
+#define DALSectionIndexListDefaultFont [UIFont boldSystemFontOfSize:11.f]
+#define DALSectionIndexListDefaultTextColor [UIColor colorWithRed:0.631f green:0.639f blue:0.647f alpha:1.f]
+#define DALSectionIndexListDefaultHighlightedTextColor [UIColor colorWithRed:0.431f green:0.439f blue:0.451f alpha:1.f]
+#define DALSectionIndexListDefaultTextShadow [NSShadow shadowWithColor:[UIColor whiteColor] offset:CGSizeMake(0.f, 1.f) blurRadius:1.f]
+
+#define DALSectionIndexListBubbleColor [UIColor colorWithWhite:0.f alpha:0.5f]
+static CGFloat const DALSectionIndexListBubbleYInset = 6.f;
+static CGFloat const DALSectionIndexListBubbleWidth = 28.f;
+
 @interface DALSectionIndexListView ()
-@property (nonatomic, assign) BOOL attributesDirty;
-@property (nonatomic, strong, readonly) NSDictionary *textAttributes;
+@property (nonatomic, assign, readwrite, getter = isHighlighted) BOOL highlighted;
 @end
 
 @implementation DALSectionIndexListView {
     NSArray *_layoutRects;
     NSMutableDictionary *_textAttributes;
+    UIColor *_textColor;
+    UIColor *_highlightedTextColor;
+    id _lastNotifiedIndexTitle;
 }
-@synthesize textAttributes = _textAttributes;
 
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
         self.opaque = NO;
         self.backgroundColor = [UIColor clearColor];
+        self.userInteractionEnabled = YES;
         _textAttributes = [NSMutableDictionary dictionary];
         NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
         [style setAlignment:NSTextAlignmentCenter];
         _textAttributes[NSParagraphStyleAttributeName] = style;
-        self.font = [UIFont boldSystemFontOfSize:11.f];
-        self.textColor = [UIColor colorWithRed:0.631 green:0.639 blue:0.647 alpha:1.f];
-        self.textShadow = [NSShadow shadowWithColor:[UIColor whiteColor] offset:CGSizeMake(0.f, 1.f) blurRadius:1.f];
+        self.font = DALSectionIndexListDefaultFont;
+        self.textColor = DALSectionIndexListDefaultTextColor;
+        self.highlightedTextColor = DALSectionIndexListDefaultHighlightedTextColor;
+        self.textShadow = DALSectionIndexListDefaultTextShadow;
     }
     return self;
 }
@@ -49,55 +62,63 @@ static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
             [obj drawInRect:rect];
         }
     }];
-}
-
-#pragma mark - Accessors
-
-- (void)setSectionIndexTitles:(NSArray *)sectionIndexTitles
-{
-    if (_sectionIndexTitles != sectionIndexTitles) {
-        _sectionIndexTitles = sectionIndexTitles;
-        [self _recalculateGeometry];
+    if (self.highlighted) {
+        CGFloat widthInset = (CGRectGetWidth(self.bounds) - DALSectionIndexListBubbleWidth) / 2.f;
+        CGRect bubbleRect = CGRectInset(self.bounds, widthInset, DALSectionIndexListBubbleYInset);
+        CGFloat radius = CGRectGetWidth(bubbleRect) / 2.f;
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:bubbleRect cornerRadius:radius];
+        [DALSectionIndexListBubbleColor set];
+        [path fill];
     }
 }
+
+#pragma mark - Touch Events
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.highlighted = YES;
+    CGPoint point = [[touches anyObject] locationInView:self];
+    [self _notifyDelegateWithTappedPoint:point];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.highlighted = NO;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint point = [[touches anyObject] locationInView:self];
+    [self _notifyDelegateWithTappedPoint:point];
+}
+
+- (void)_notifyDelegateWithTappedPoint:(CGPoint)point
+{
+    id<DALSectionIndexCollectionViewDelegate> delegate = self.collectionView.delegate;
+    if ([delegate respondsToSelector:@selector(collectionView:tappedSectionIndexTitle:)]) {
+        CGFloat width = CGRectGetWidth(self.bounds);
+        [_layoutRects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CGRect rect = [obj CGRectValue];
+            rect.size.width = width;
+            if (CGRectContainsPoint(rect, point)) {
+                id title = self.sectionIndexTitles[idx];
+                if (_lastNotifiedIndexTitle != title) {
+                    _lastNotifiedIndexTitle = title;
+                    [delegate collectionView:self.collectionView tappedSectionIndexTitle:title];
+                }
+                *stop = YES;
+            }
+        }];
+    }
+}
+
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     [self _recalculateGeometry];
 }
-
-- (UIFont *)font
-{
-    return _textAttributes[NSFontAttributeName];
-}
-
-- (void)setFont:(UIFont *)font
-{
-    _textAttributes[NSFontAttributeName] = font;
-}
-
-- (UIColor *)textColor
-{
-    return _textAttributes[NSForegroundColorAttributeName];
-}
-
-- (void)setTextColor:(UIColor *)textColor
-{
-    _textAttributes[NSForegroundColorAttributeName] = textColor;
-}
-
-- (NSShadow *)shadow
-{
-    return _textAttributes[NSShadowAttributeName];
-}
-
-- (void)setTextShadow:(NSShadow *)textShadow
-{
-    _textAttributes[NSShadowAttributeName] = textShadow;
-}
-
-#pragma mark - Layout
 
 - (void)_recalculateGeometry
 {
@@ -134,5 +155,68 @@ static CGFloat const DALSectionIndexListViewEdgeInset = 15.f;
         _layoutRects = nil;
     }
     [self setNeedsDisplay];
+}
+
+#pragma mark - Accessors
+
+- (void)setFont:(UIFont *)font
+{
+    if (_font != font) {
+        _font = font;
+        _textAttributes[NSFontAttributeName] = font;
+    }
+}
+
+- (void)setTextShadow:(NSShadow *)textShadow
+{
+    if (_textShadow != textShadow) {
+        _textShadow = textShadow;
+        _textAttributes[NSShadowAttributeName] = textShadow;
+    }
+}
+
+- (void)setTextColor:(UIColor *)textColor
+{
+    if (_textColor != textColor) {
+        _textColor = textColor;
+        [self _resetTextColor];
+    }
+}
+
+- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor
+{
+    if (_highlightedTextColor != highlightedTextColor) {
+        _highlightedTextColor = highlightedTextColor;
+        [self _resetTextColor];
+    }
+}
+
+- (void)setSectionIndexTitles:(NSArray *)sectionIndexTitles
+{
+    if (_sectionIndexTitles != sectionIndexTitles) {
+        _lastNotifiedIndexTitle = nil;
+        _sectionIndexTitles = sectionIndexTitles;
+        [self _recalculateGeometry];
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    if (_highlighted != highlighted) {
+        _highlighted = highlighted;
+        [self _resetTextColor];
+        [self setNeedsDisplay];
+    }
+}
+
+#pragma mark - Private
+
+- (void)_resetTextColor
+{
+    if (self.highlighted && self.highlightedTextColor) {
+        _textAttributes[NSForegroundColorAttributeName] = self.highlightedTextColor;
+    } else if (!self.highlighted && self.textColor) {
+        _textAttributes[NSForegroundColorAttributeName] = self.textColor;
+    }
 }
 @end

@@ -11,15 +11,20 @@
 
 extern CGFloat const DALSectionIndexListViewWidth;
 
-@class DALSectionIndexCollectionView;
 @protocol DALSectionIndexCollectionViewDataSource <UICollectionViewDataSource>
 @optional
 - (NSArray *)sectionIndexTitlesForCollectionView:(UICollectionView *)collectionView;
 @end
 
+@protocol DALSectionIndexCollectionViewDelegate <UICollectionViewDelegate>
+@optional
+- (void)collectionView:(UICollectionView *)collectionView tappedSectionIndexTitle:(id)title;
+@end
+
 @interface DALSectionIndexCollectionView : UICollectionView
 @property (nonatomic, strong, readonly) DALSectionIndexListView *indexListView;
 @property (nonatomic, assign) id<DALSectionIndexCollectionViewDataSource> dataSource;
+@property (nonatomic, assign) id<DALSectionIndexCollectionViewDelegate> delegate;
 @end
 
 

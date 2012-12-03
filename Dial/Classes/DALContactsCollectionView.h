@@ -9,7 +9,7 @@
 #import "DALSectionIndexCollectionView.h"
 
 @class DALContactsCollectionView;
-@protocol DALContactsCollectionViewDelegate <UICollectionViewDelegate>
+@protocol DALContactsCollectionViewDelegate <DALSectionIndexCollectionViewDelegate>
 @optional
 - (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath;
 @end
