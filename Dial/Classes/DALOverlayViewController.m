@@ -9,6 +9,10 @@
 #import "DALOverlayViewController.h"
 #import "DALCircularMenu.h"
 
+#import "CoreGraphics+DALAdditions.h"
+
+#define ROTATE_BUFFER M_PI / 12.f
+
 static NSString* const DALOverlayMenuEditButtonImageName = @"button-edit";
 static NSString* const DALOverlayMenuFaceTimeButtonImageName = @"button-facetime";
 static NSString* const DALOverlayMenuMessageButtonImageName = @"button-message";
@@ -86,50 +90,63 @@ static NSString* const DALOverlayMenuStarButtonImageName = @"button-star";
     UIButton *message = [self _menuButtonForImageName:DALOverlayMenuMessageButtonImageName];
     UIButton *star = [self _menuButtonForImageName:DALOverlayMenuStarButtonImageName];
     UIButton *edit = [self _menuButtonForImageName:DALOverlayMenuEditButtonImageName];
+    NSArray *items = @[facetime, message, star, edit];
     
     DALCircularMenu *circularMenu = [[DALCircularMenu alloc] initWithFrame:self.view.bounds];
     circularMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     circularMenu.userInteractionEnabled = NO;
     circularMenu.animationOrigin = origin;
     
-    CGFloat r = circularMenu.destinationRadius + CGRectGetWidth(facetime.frame) / 2.f;
-    BOOL lowerHalf = origin.y >= CGRectGetMidY(self.view.bounds);
-    BOOL reverseItemOrder = NO;
-    CGFloat h = lowerHalf ? (CGRectGetMaxY(self.view.bounds) - origin.y) : origin.y;
-    if (origin.x - r < 0.f) { // left
-        if (h >= r) {
-            circularMenu.menuAngle = M_PI;
-            circularMenu.itemRotationAngle = M_PI/8.f;
+    CGRect bounds = self.view.bounds;
+    BOOL reverseItems = NO;
+    BOOL bottom = origin.y >= CGRectGetMidY(bounds);
+    BOOL right = origin.x >= CGRectGetMidX(bounds);
+    CGFloat r = circularMenu.destinationRadius;
+    CGFloat a = CGRectGetWidth(facetime.frame) / 2.f;
+    if (!bottom) {
+        origin.y -= 20.f;
+    }
+    CGFloat h = bottom ? (CGRectGetMaxY(bounds) - origin.y) : origin.y;
+    CGFloat w = right ? (CGRectGetMaxX(bounds) - origin.x) : origin.x;
+    CGFloat ma /* menu angle */, ra /* rotation angle */ = 0.f;
+    if (origin.x - r < CGRectGetMinX(bounds)) {
+        if (h >= (r + a)) {
+            ma = M_PI - (ROTATE_BUFFER * 4.f);
+            ra = (ROTATE_BUFFER * 2.f);
         } else {
-            if (lowerHalf) {
-                circularMenu.menuAngle = M_PI/2.f + asin(h/r);
-                circularMenu.itemRotationAngle = 0.f;
+            if (bottom) {
+                ma = M_PI_2 + asin((w-a)/r) + asin((h-a)/r) - (ROTATE_BUFFER * 2.f);
+                ra = -asin((w-a)/r) + ROTATE_BUFFER;
             } else {
-                circularMenu.menuAngle = M_PI/2.f + atan(h/r);
-                circularMenu.itemRotationAngle = M_PI/4.f + acos(h/r);
+                origin.y -= 20.f;
+                ma = (3.f * M_PI / 2.f) - acos((w-a)/r) - acos((h-a)/r) - (ROTATE_BUFFER * 2.f);
+                ra = acos((h-a)/r) + ROTATE_BUFFER;
             }
         }
-    } else if (origin.x + r > CGRectGetMaxX(self.view.bounds)) { // right
-        if (h >= r) {
-            circularMenu.menuAngle = -M_PI;
-            circularMenu.itemRotationAngle = -M_PI/8.f;
+    } else if (origin.x + r > CGRectGetMaxX(bounds)) {
+        if (h >= (r + a)) {
+            ma = -M_PI + (ROTATE_BUFFER * 4.f);
+            ra = -(ROTATE_BUFFER * 2.f);
         } else {
-            if (lowerHalf) {
-                
+            if (bottom) {
+                ma = -M_PI_2 - asin((w-a)/r) - asin((h-a)/r) + (ROTATE_BUFFER * 2.f);
+                ra = asin((w-a)/r) - ROTATE_BUFFER;
             } else {
-                circularMenu.menuAngle = M_PI/2.f + atan(h/r);
-                circularMenu.itemRotationAngle = -(M_PI - 2*acos(h/r));
+                ma = acos((w-a)/r) + acos((h-a)/r) - (3.f * M_PI / 2.f)+ (ROTATE_BUFFER * 2.f);
+                ra = -acos((h-a)/r) - ROTATE_BUFFER;
             }
         }
-    } else { // center
-        circularMenu.menuAngle = M_PI;
-        circularMenu.itemRotationAngle = -M_PI / 2.65f;
-        if (!lowerHalf && h < r) {
-            circularMenu.itemRotationAngle -= M_PI;
-            reverseItemOrder = YES;
+    } else {
+        ma = 3.f * M_PI / 4.f;
+        ra = -3.f * M_PI / 8.f;
+        if (!bottom && h < r) {
+            ra -= M_PI;
+            reverseItems = YES;
         }
     }
-    if (reverseItemOrder) {
+    circularMenu.menuAngle = ma;
+    circularMenu.itemRotationAngle = ra;
+    if (reverseItems) {
         circularMenu.menuItems = @[edit, star, message, facetime];
     } else {
         circularMenu.menuItems = @[facetime, message, star, edit];
@@ -154,4 +171,6 @@ static NSString* const DALOverlayMenuStarButtonImageName = @"button-star";
     [button setImage:image forState:UIControlStateNormal];
     return button;
 }
+
+
 @end

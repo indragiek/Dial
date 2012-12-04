@@ -11,7 +11,7 @@
 @class DALContactsCollectionView;
 @protocol DALContactsCollectionViewDelegate <DALSectionIndexCollectionViewDelegate>
 @optional
-- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath atPoint:(CGPoint)point;
 @end
 
 @interface DALContactsCollectionView : DALSectionIndexCollectionView

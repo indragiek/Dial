@@ -34,3 +34,13 @@ void DALDrawGradientWithColors(NSArray *colors, CGFloat locations[], CGPoint sta
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
 }
+
+CGFloat DALDegreesToRadians(CGFloat degrees)
+{
+    return degrees * M_PI / 180;
+}
+
+CGFloat DALRadiansToDegrees(CGFloat radians)
+{
+    return radians * 180 / M_PI;
+}

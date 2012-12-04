@@ -269,7 +269,6 @@
 		037534391662D6C0006BAACF = {
 			isa = PBXGroup;
 			children = (
-				03D67AAF166D18FE009A3D14 /* libicucore.dylib */,
 				0375344E1662D6C1006BAACF /* Dial */,
 				037534471662D6C1006BAACF /* Frameworks */,
 				037534451662D6C1006BAACF /* Products */,
@@ -287,6 +286,7 @@
 		037534471662D6C1006BAACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03D67AAF166D18FE009A3D14 /* libicucore.dylib */,
 				03D67AAD166D185F009A3D14 /* Security.framework */,
 				03D67AAB166D1855009A3D14 /* CoreData.framework */,
 				03D67AA9166D184E009A3D14 /* CFNetwork.framework */,

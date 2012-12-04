@@ -145,24 +145,26 @@ static NSString* const DALContactsCellPlaceholderImageName = @"placeholder";
 
 #pragma mark - UICollectionViewDelegate
 
-- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(DALContactsCollectionView *)collectionView longPressOnCellAtIndexPath:(NSIndexPath *)indexPath atPoint:(CGPoint)point
 {
     DALContactCollectionViewCell *cell = (DALContactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (cell) {
         UIView *container = [self.view superview];
         UIView *imageContainer = cell.imageContainerView;
-        UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
-        CGPoint origin = [imageContainer.superview convertPoint:imageContainer.center toView:nil];
-        DALOverlayViewController *overlayViewController = [[DALOverlayViewController alloc] initWithCellImage:contactImage cellOrigin:origin];
-        overlayViewController.view.frame = container.bounds;
-        overlayViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [container addSubview:overlayViewController.view];
-        [overlayViewController setCloseCompletionBlock:^(DALOverlayViewController *vc) {
-            [self.overlayViewController.view removeFromSuperview];
-            self.overlayViewController = nil;
-        }];
-        self.overlayViewController = overlayViewController;
-        [self.overlayViewController expandMenu];
+        if (CGRectContainsPoint(imageContainer.frame, point)) {
+            UIImage *contactImage = [imageContainer.UIImage imageCroppedToEllipse];
+            CGPoint origin = [imageContainer.superview convertPoint:imageContainer.center toView:nil];
+            DALOverlayViewController *overlayViewController = [[DALOverlayViewController alloc] initWithCellImage:contactImage cellOrigin:origin];
+            overlayViewController.view.frame = container.bounds;
+            overlayViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+            [container addSubview:overlayViewController.view];
+            [overlayViewController setCloseCompletionBlock:^(DALOverlayViewController *vc) {
+                [self.overlayViewController.view removeFromSuperview];
+                self.overlayViewController = nil;
+            }];
+            self.overlayViewController = overlayViewController;
+            [self.overlayViewController expandMenu];
+        }
     }
 }
 

@@ -149,7 +149,7 @@ static CGPoint DALRotatePointAroundCenter(CGPoint point, CGPoint center, CGFloat
 
 - (CGPoint)_rotatedPointWithRadius:(CGFloat)radius forItemAtIndex:(NSUInteger)index
 {
-    CGFloat partialAngle = index * (self.menuAngle / [self.menuItems count]);
+    CGFloat partialAngle = index * (self.menuAngle / ([self.menuItems count] - 1));
     CGPoint point = CGPointMake(self.animationOrigin.x + radius * sinf(partialAngle), self.animationOrigin.y - radius * cosf(partialAngle));
     return DALRotatePointAroundCenter(point, self.animationOrigin, self.itemRotationAngle);
 }
@@ -167,8 +167,7 @@ static CGPoint DALRotatePointAroundCenter(CGPoint point, CGPoint center, CGFloat
     CGMutablePathRef path = CGPathCreateMutable();
     DALCircularMenuLayoutData *data = _layoutData[index];
     CGPathMoveToPoint(path, NULL, data.origin.x, data.origin.y);
-    CGPathAddLineToPoint(path, NULL, data.stretchPoint.x, data.stretchPoint.y)
-    ;
+    CGPathAddLineToPoint(path, NULL, data.stretchPoint.x, data.stretchPoint.y);
     CGPathAddLineToPoint(path, NULL, data.compressionPoint.x, data.compressionPoint.y);
     CGPathAddLineToPoint(path, NULL, data.destination.x, data.destination.y);
     animation.path = path;

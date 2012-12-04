@@ -22,7 +22,7 @@
     [self.window makeKeyAndVisible];
     
     PDDebugger *debugger = [PDDebugger defaultInstance];
-    [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
+    [debugger connectToURL:[NSURL URLWithString:@"ws://142.244.149.207:9000/device"]];
     [debugger enableViewHierarchyDebugging];
     [debugger setDisplayedViewAttributeKeyPaths:@[@"frame", @"hidden", @"alpha", @"opaque"]];
     return YES;

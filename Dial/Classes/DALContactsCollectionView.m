@@ -46,8 +46,10 @@ static CGFloat const DALContactsLayoutSectionHeaderHeight = 30.f;
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         CGPoint location = [recognizer locationInView:self];
         NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
-        if (indexPath && [self.delegate respondsToSelector:@selector(collectionView:longPressOnCellAtIndexPath:)]) {
-            [self.delegate collectionView:self longPressOnCellAtIndexPath:indexPath];
+        if (indexPath && [self.delegate respondsToSelector:@selector(collectionView:longPressOnCellAtIndexPath:atPoint:)]) {
+            UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+            CGPoint location = [recognizer locationInView:cell];
+            [self.delegate collectionView:self longPressOnCellAtIndexPath:indexPath atPoint:location];
         }
     }
 }
