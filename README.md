@@ -1,7 +1,7 @@
 ## Dial
 #### The beginnings of a replacement Contacts app for iOS.
 
-![demo](https://github.com/indragiek/Dial/blob/master/dial.gif)
+![demo](https://raw.github.com/indragiek/Dial/master/dial.gif)
 
 This is an unfinished project that [Tyler Murphy](http://twitter.com/tylrmurphy) and I started working on last year. The project wasn't completed for two primary reasons:
 
