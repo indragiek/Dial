@@ -11,6 +11,7 @@
 // Fix for cell wrapping bug from <http://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios>
 
 @implementation DALCollectionViewFlowLayout
+/*
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
@@ -21,5 +22,5 @@
         }
     }
     return newAttributes;
-}
+}*/
 @end
