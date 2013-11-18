@@ -7,8 +7,6 @@
 //
 
 #import "DALAppDelegate.h"
-#import <PonyDebugger/PonyDebugger.h>
-
 #import "DALContactsViewController.h"
 
 @implementation DALAppDelegate
@@ -20,11 +18,6 @@
     self.viewController.view.frame = self.window.bounds;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
-    PDDebugger *debugger = [PDDebugger defaultInstance];
-    [debugger connectToURL:[NSURL URLWithString:@"ws://142.244.149.207:9000/device"]];
-    [debugger enableViewHierarchyDebugging];
-    [debugger setDisplayedViewAttributeKeyPaths:@[@"frame", @"hidden", @"alpha", @"opaque"]];
     return YES;
 }
 
@@ -52,7 +45,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[PDDebugger defaultInstance] disconnect];
 }
 
 @end

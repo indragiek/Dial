@@ -59,8 +59,6 @@
 		03B94F701664503F007EDF4F /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F6A1664503F007EDF4F /* bg@2x.png */; };
 		03B94F7416645128007EDF4F /* DALContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */; };
 		03B94F791664734F007EDF4F /* DALContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */; };
-		03D67AA6166D1815009A3D14 /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67A9F166D17FC009A3D14 /* libPonyDebugger.a */; };
-		03D67AA8166D1818009A3D14 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67AA7166D1818009A3D14 /* libSocketRocket.a */; };
 		03D67AAA166D184E009A3D14 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67AA9166D184E009A3D14 /* CFNetwork.framework */; };
 		03D67AAC166D1855009A3D14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67AAB166D1855009A3D14 /* CoreData.framework */; };
 		03D67AAE166D185F009A3D14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67AAD166D185F009A3D14 /* Security.framework */; };
@@ -70,23 +68,6 @@
 		03D6B2541667CA160081AF76 /* DALSectionIndexCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2531667CA160081AF76 /* DALSectionIndexCollectionView.m */; };
 		03D6B2571667D0020081AF76 /* DALContactsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D6B2561667D0020081AF76 /* DALContactsCollectionView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		03D67A9E166D17FC009A3D14 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D67A92166D17FB009A3D14 /* PonyDebugger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F683ADAC14FC1B4C008EBBA7;
-			remoteInfo = PonyDebugger;
-		};
-		03D67AA4166D1808009A3D14 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D67A92166D17FB009A3D14 /* PonyDebugger.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F683ADAB14FC1B4C008EBBA7;
-			remoteInfo = PonyDebugger;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0301A38C1669C865007D8D7B /* DALLongPressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALLongPressOverlayView.h; path = Classes/DALLongPressOverlayView.h; sourceTree = "<group>"; };
@@ -165,8 +146,6 @@
 		03B94F7216645128007EDF4F /* DALContactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALContactCollectionViewCell.h; path = Classes/DALContactCollectionViewCell.h; sourceTree = "<group>"; };
 		03B94F7316645128007EDF4F /* DALContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALContactCollectionViewCell.m; path = Classes/DALContactCollectionViewCell.m; sourceTree = "<group>"; };
 		03B94F781664734F007EDF4F /* DALContactCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DALContactCollectionViewCell.xib; path = Classes/DALContactCollectionViewCell.xib; sourceTree = "<group>"; };
-		03D67A92166D17FB009A3D14 /* PonyDebugger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PonyDebugger.xcodeproj; path = External/PonyDebugger/ObjC/PonyDebugger.xcodeproj; sourceTree = SOURCE_ROOT; };
-		03D67AA7166D1818009A3D14 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "External/PonyDebugger/ObjC/SocketRocket/build/Release-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
 		03D67AA9166D184E009A3D14 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		03D67AAB166D1855009A3D14 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		03D67AAD166D185F009A3D14 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -190,8 +169,6 @@
 				03D67AAE166D185F009A3D14 /* Security.framework in Frameworks */,
 				03D67AAC166D1855009A3D14 /* CoreData.framework in Frameworks */,
 				03D67AAA166D184E009A3D14 /* CFNetwork.framework in Frameworks */,
-				03D67AA8166D1818009A3D14 /* libSocketRocket.a in Frameworks */,
-				03D67AA6166D1815009A3D14 /* libPonyDebugger.a in Frameworks */,
 				03B2654B1669DAD40098948B /* QuartzCore.framework in Frameworks */,
 				03199F4A1665E7B700C1B57B /* CoreImage.framework in Frameworks */,
 				03084F3E1664947F00227BC0 /* AddressBook.framework in Frameworks */,
@@ -290,7 +267,6 @@
 				03D67AAD166D185F009A3D14 /* Security.framework */,
 				03D67AAB166D1855009A3D14 /* CoreData.framework */,
 				03D67AA9166D184E009A3D14 /* CFNetwork.framework */,
-				03D67AA7166D1818009A3D14 /* libSocketRocket.a */,
 				03B2654A1669DAD40098948B /* QuartzCore.framework */,
 				03199F491665E7B600C1B57B /* CoreImage.framework */,
 				03084F3D1664947F00227BC0 /* AddressBook.framework */,
@@ -304,7 +280,6 @@
 		0375344E1662D6C1006BAACF /* Dial */ = {
 			isa = PBXGroup;
 			children = (
-				03D67A90166D17F1009A3D14 /* External */,
 				03942AB316651CEA007809D3 /* Categories */,
 				03B94F5816644E47007EDF4F /* Resources */,
 				03942AB716652145007809D3 /* Utilities */,
@@ -444,22 +419,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		03D67A90166D17F1009A3D14 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				03D67A92166D17FB009A3D14 /* PonyDebugger.xcodeproj */,
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
-		03D67A93166D17FB009A3D14 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03D67A9F166D17FC009A3D14 /* libPonyDebugger.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,7 +433,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				03D67AA5166D1808009A3D14 /* PBXTargetDependency */,
 			);
 			name = Dial;
 			productName = Dial;
@@ -501,28 +459,12 @@
 			mainGroup = 037534391662D6C0006BAACF;
 			productRefGroup = 037534451662D6C1006BAACF /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 03D67A93166D17FB009A3D14 /* Products */;
-					ProjectRef = 03D67A92166D17FB009A3D14 /* PonyDebugger.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				037534431662D6C1006BAACF /* Dial */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		03D67A9F166D17FC009A3D14 /* libPonyDebugger.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPonyDebugger.a;
-			remoteRef = 03D67A9E166D17FC009A3D14 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		037534421662D6C1006BAACF /* Resources */ = {
@@ -593,14 +535,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		03D67AA5166D1808009A3D14 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PonyDebugger;
-			targetProxy = 03D67AA4166D1808009A3D14 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		037534511662D6C1006BAACF /* InfoPlist.strings */ = {

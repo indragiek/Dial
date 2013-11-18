@@ -1,3 +1,0 @@
-[submodule "External/PonyDebugger"]
-	path = External/PonyDebugger
-	url = git://github.com/square/PonyDebugger.git
