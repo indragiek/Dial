@@ -90,7 +90,7 @@ static NSString* const DALOverlayMenuStarButtonImageName = @"button-star";
     UIButton *message = [self _menuButtonForImageName:DALOverlayMenuMessageButtonImageName];
     UIButton *star = [self _menuButtonForImageName:DALOverlayMenuStarButtonImageName];
     UIButton *edit = [self _menuButtonForImageName:DALOverlayMenuEditButtonImageName];
-    NSArray *items = @[facetime, message, star, edit];
+   //  NSArray *items = @[facetime, message, star, edit];
     
     DALCircularMenu *circularMenu = [[DALCircularMenu alloc] initWithFrame:self.view.bounds];
     circularMenu.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
